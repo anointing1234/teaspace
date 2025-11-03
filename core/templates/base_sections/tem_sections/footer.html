@@ -1,0 +1,116 @@
+{% load static %}
+<!--Site Footer Start-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div class="site-footer__shape-1 zoom-fade-3">
+        <img src="{% static 'assets/images/shapes/site-footer-shape-1.png' %}" alt="">
+      </div>
+
+      <div class="site-footer__top">
+        <div class="row">
+          <!-- About Section -->
+          <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+            <div class="footer-widget__column footer-widget__about">
+              <div class="footer-widget__logo">
+                <a href="{% url 'home' %}">
+                  <img src="{% static 'assets/images/resources/logo-2.png' %}" alt="TAE Aerospace Logo">
+                </a>
+              </div>
+              <div class="footer-widget__about-text-box">
+                <p class="footer-widget__about-text">
+                  TAE Aerospace is a privately-owned global aerospace company with facilities across Asia-Pacific and the Americas. 
+                  We create value through quality products and services in turbine engine and component MRO, aerospace engineering, and advanced manufacturing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explore Section -->
+          <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+            <div class="footer-widget__column footer-widget__Explore">
+              <div class="footer-widget__title-box">
+                <h3 class="footer-widget__title">Explore</h3>
+              </div>
+              <ul class="footer-widget__Explore-list list-unstyled">
+                <li><a href="#">Commercial</a></li>
+                <li><a href="{% url 'fixed_wing' %}">Fixed Wing</a></li>
+                <li><a href="{% url 'rotary_wing' %}">Rotary Wing</a></li>
+                <li><a href="#">Defense</a></li>
+                <li><a href="{% url 'airplatforms' %}">Air Platforms</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Links Section -->
+          <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+            <div class="footer-widget__column footer-widget__links">
+              <div class="footer-widget__title-box">
+                <h3 class="footer-widget__title">Links</h3>
+              </div>
+              <ul class="footer-widget__Explore-list list-unstyled">
+                <li><a href="#">Land Platforms</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="{% url 'careers' %}">Careers</a></li>
+                <li><a href="{% url 'news' %}">News & Insights</a></li>
+                <li><a href="{% url 'approvals' %}">Approvals</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+            <div class="footer-widget__column footer-widget__Contact">
+              <div class="footer-widget__title-box">
+                <h3 class="footer-widget__title">Contact</h3>
+              </div>
+              <ul class="footer-widget__Contact-list list-unstyled">
+                <li>
+                  <div class="icon"><span class="fas fa-phone"></span></div>
+                  <div class="text"><p><a href="tel:+14808170300">+1 480-817-0300</a></p></div>
+                </li>
+                <li>
+                  <div class="icon"><span class="fas fa-phone"></span></div>
+                  <div class="text"><p><a href="tel:+14805006677">+1 480-500-6677</a></p></div>
+                </li>
+                <li>
+                  <div class="icon"><span class="fas fa-envelope"></span></div>
+                  <div class="text"><p><a href="mailto:info@taesaerospace.com">info@taesaerospace.com</a></p></div>
+                </li>
+                <li>
+                  <div class="icon"><span class="fas fa-map-marker-alt"></span></div>
+                  <div class="text">
+                    <p>
+                      TAE Aerospace, Inc.<br>
+                      7879 E Beck Ln, Scottsdale,<br>
+                      AZ 85260, United States
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="site-footer__bottom">
+        <div class="site-footer__bottom-inner">
+          <div class="site-footer__bottom-left">
+            <p class="site-footer__bottom-text">
+              © 2025 TAE Aerospace. All Rights Reserved. | <a href="#">Privacy</a>
+            </p>
+          </div>
+          <div class="site-footer__bottom-right">
+            <div class="site-footer__social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--Site Footer End-->

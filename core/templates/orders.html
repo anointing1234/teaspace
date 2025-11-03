@@ -1,0 +1,71 @@
+{% extends "base_sections/base/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+<!-- Page Header Start -->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>My Orders</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Orders</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header End -->
+
+<!-- Orders List Start -->
+<section class="orders-page py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% if orders %}
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Payment Status</th>
+                                <th scope="col">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>#{{ order.id }}</td>
+                                <td>{{ order.created_at|date:"M d, Y H:i" }}</td>
+                                <td>${{ order.total_price|intcomma }}</td>
+                                <td>
+                                    {% if order.is_paid %}
+                                        <span class="badge bg-success">Paid</span>
+                                    {% else %}
+                                        <span class="badge bg-warning text-dark">Pending</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'order_detail' order.id %}" class="btn btn-sm btn-primary">View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                    <div class="alert alert-info text-center">
+                        You have not placed any orders yet.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Orders List End -->
+
+{% endblock contents %}

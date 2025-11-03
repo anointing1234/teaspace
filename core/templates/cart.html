@@ -1,0 +1,189 @@
+{% extends "base_sections/base/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+<!-- Page Header Start -->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Cart</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Shop</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header End -->
+
+<!-- Start Cart Page -->
+<section class="cart-page">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table cart-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if items %}
+                        {% for item in items %}
+                            <tr data-item-id="{{ item.id }}">
+                                <td>
+                                    <div class="product-box">
+                                        <div class="img-box">
+                                            {% if item.plane.image %}
+                                                <img src="{{ item.plane.image.url }}" alt="{{ item.plane.name }}">
+                                            {% else %}
+                                                <img src="{% static 'assets/images/shop/default-plane.jpg' %}" alt="{{ item.plane.name }}">
+                                            {% endif %}
+                                        </div>
+                                        <h3><a href="{% url 'product_detail' item.plane.id %}">{{ item.plane.name }}</a></h3>
+                                    </div>
+                                </td>
+                                <td>${{ item.plane.price|intcomma }}</td>
+                                <td>
+                                    <div class="quantity-box">
+                                        <button type="button" class="sub" data-action="decrease"><i class="fa fa-minus"></i></button>
+                                        <input type="number" class="quantity-input" value="{{ item.quantity }}" readonly>
+                                        <button type="button" class="add" data-action="increase"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td class="item-total">${{ item.total_price|intcomma }}</td>
+                                <td>
+                                    <div class="cross-icon">
+                                        <i class="icon-close remove-icon" data-action="remove"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">Your cart is empty.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-8 col-lg-7"></div>
+            <div class="col-xl-4 col-lg-5">
+                <ul class="cart-total list-unstyled">
+                    <li>
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">
+                            {% if cart %}
+                                ${{ cart.total_price|intcomma }} USD
+                            {% else %}
+                                $0 USD
+                            {% endif %}
+                        </span>
+                    </li>
+                    <li>
+                        <span>Shipping Cost</span>
+                        <span>$0.00 USD</span>
+                    </li>
+                    <li>
+                        <span>Total</span>
+                        <span class="cart-total-amount">
+                            {% if cart %}
+                                ${{ cart.total_price|intcomma }} USD
+                            {% else %}
+                                $0 USD
+                            {% endif %}
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="cart-page__buttons">
+                    <div class="cart-page__buttons-2">
+                        <a href="{% url 'checkout' %}" class="thm-btn">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Cart Page -->
+
+<!-- AJAX Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    function updateCartItem(itemId, action) {
+        fetch("{% url 'update_cart_item' %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ item_id: itemId, action: action })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success) {
+                const row = document.querySelector(`tr[data-item-id='${itemId}']`);
+
+                if(action === 'remove' || (action === 'decrease' && data.quantity === 0)) {
+                    if(row) row.remove();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Removed',
+                        text: 'Item removed from cart',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
+                } else {
+                    if(row) row.querySelector('.quantity-input').value = data.quantity;
+                    if(row) row.querySelector('.item-total').innerText = `$${data.item_total.toLocaleString()}`;
+                }
+
+                const cartSubtotal = document.querySelector('#cart-subtotal');
+                if(cartSubtotal) cartSubtotal.innerText = `$${data.cart_total.toLocaleString()} USD`;
+
+                const cartTotalAmount = document.querySelector('.cart-total-amount');
+                if(cartTotalAmount) cartTotalAmount.innerText = `$${data.cart_total.toLocaleString()} USD`;
+
+                const cartCountElem = document.getElementById('cart-count');
+                if(cartCountElem) cartCountElem.innerText = data.cart_count;
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong. Please try again!',
+            });
+        });
+    }
+
+    document.querySelector('tbody').addEventListener('click', function(e) {
+        const target = e.target.closest('.add, .sub, .remove-icon');
+        if(!target) return;
+
+        const row = target.closest('tr');
+        const itemId = row.dataset.itemId;
+        let action = target.dataset.action;
+
+        if(target.classList.contains('add')) action = 'increase';
+        if(target.classList.contains('sub')) action = 'decrease';
+        if(target.classList.contains('remove-icon')) action = 'remove';
+
+        updateCartItem(itemId, action);
+    });
+
+});
+</script>
+
+{% endblock contents %}

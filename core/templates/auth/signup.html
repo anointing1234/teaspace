@@ -1,0 +1,283 @@
+{% extends "base_sections/base/base.html" %}
+{% load static %}
+{% block contents %}
+
+<style>
+/* ----------------- Input Fields ----------------- */
+.contact-form__input-box input[type="text"],
+.contact-form__input-box input[type="email"],
+.contact-form__input-box input[type="password"],
+.contact-form__input-box input[type="number"],
+.contact-form__input-box input[type="tel"],
+.contact-form__input-box input[type="url"],
+.contact-form__input-box textarea {
+    height: 60px;
+    width: 100%;
+    border: none;
+    background-color: var(--jetly-primary);
+    padding: 0 30px;
+    outline: none;
+    font-size: 14px;
+    color: var(--jetly-gray);
+    display: block;
+    font-weight: 400;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* ----------------- Password Toggle Icon ----------------- */
+.contact-form__input-box {
+    position: relative;
+}
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+
+/* ----------------- Preloader ----------------- */
+#preloader {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    justify-content: center;
+    align-items: center;
+}
+#preloader.active {
+    display: flex;
+}
+#preloader .spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #064e3b;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+<!-- Page Header Start -->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Sign Up</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Sign Up</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header End -->
+
+<!-- Signup Form Start -->
+<section class="contact-one mt-5 pt-5 mb-5 pb-5">
+    <div class="container d-flex justify-content-center">
+        <div class="contact-one__form-box">
+            <form id="signup-form" class="register-form contact-one__form contact-form-validated" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <input type="text" name="full_name" placeholder="Full Name" required>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <input type="tel" name="contact" placeholder="Phone number" pattern="[0-9]{10,15}" required>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <input type="password" name="password" placeholder="Password" minlength="6" required>
+                            <i class="toggle-password bi bi-eye-slash"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                            <i class="toggle-password bi bi-eye-slash"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12 d-flex flex-column align-items-center">
+                        <div class="contact-form__btn-box mb-2">
+                            <button type="submit" class="thm-btn contact-form__btn">Sign Up</button>
+                        </div>
+                        <p style="margin-top: 10px;">
+                            Already have an account? 
+                            <a href="{% url 'login' %}" style="color: var(--primary-color); text-decoration: underline;">Login here</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Signup Form End -->
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="spinner"></div>
+</div>
+
+<!-- Toastify CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+<!-- Toastify JS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("signup-form");
+    const preloader = document.getElementById("preloader");
+
+    // Toggle password visibility
+    document.querySelectorAll(".toggle-password").forEach(icon => {
+        icon.addEventListener("click", () => {
+            const input = icon.previousElementSibling;
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.replace("bi-eye-slash", "bi-eye");
+            } else {
+                input.type = "password";
+                icon.classList.replace("bi-eye", "bi-eye-slash");
+            }
+        });
+    });
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Form values
+        const fullName = form.full_name.value.trim();
+        const username = form.username.value.trim();
+        const email = form.email.value.trim();
+        const contact = form.contact.value.trim();
+        const password = form.password.value;
+        const confirmPassword = form.confirm_password.value;
+
+        // Simple validation
+        if (!fullName || !username || !email || !contact || !password || !confirmPassword) {
+            showToast("Please fill all fields.", "error");
+            return;
+        }
+        if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            showToast("Please enter a valid email address.", "error");
+            return;
+        }
+        if (!contact.match(/^\d{10,15}$/)) {
+            showToast("Please enter a valid phone number (10-15 digits).", "error");
+            return;
+        }
+        if (password.length < 6) {
+            showToast("Password must be at least 6 characters.", "error");
+            return;
+        }
+        if (password !== confirmPassword) {
+            showToast("Passwords do not match.", "error");
+            return;
+        }
+
+        // Show preloader
+        preloader.classList.add("active");
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch("{% url 'register_user' %}", {
+                method: "POST",
+                headers: { "X-CSRFToken": getCookie("csrftoken") },
+                body: formData
+            });
+
+            const data = await response.json();
+            preloader.classList.remove("active");
+
+            if (response.ok) {
+                showToast(data.message || "Registration successful!", "success");
+                setTimeout(() => {
+                    window.location.href = data.redirect_url || "{% url 'login' %}";
+                }, 1500);
+            } else {
+                showToast(data.error || "Something went wrong!", "error");
+            }
+        } catch (err) {
+            preloader.classList.remove("active");
+            showToast("Network error. Please try again.", "error");
+        }
+    });
+
+    // Toast helper
+    function showToast(message, type="success") {
+        const isMobile = window.innerWidth < 768;
+        Toastify({
+            text: message,
+            duration: 4000,
+            close: true,
+            gravity: isMobile ? "center" : "top",
+            position: isMobile ? "center" : "right",
+            stopOnFocus: true,
+            style: {
+                background: type === "success" ? "#064e3b" : "#b91c1c",
+                color: "#fff",
+                borderRadius: "10px",
+                fontWeight: "600",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+                padding: "14px 18px",
+                width: isMobile ? "80%" : "auto",
+                textAlign: "center"
+            }
+        }).showToast();
+    }
+
+    // CSRF helper
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split(";");
+            for (let cookie of cookies) {
+                cookie = cookie.trim();
+                if (cookie.startsWith(name + "=")) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+</script>
+
+{% endblock contents %}

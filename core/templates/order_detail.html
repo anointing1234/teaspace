@@ -1,0 +1,126 @@
+{% extends "base_sections/base/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+<!-- Page Header Start -->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Order #{{ order.id }}</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Order Details</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header End -->
+
+<section class="order-details-page py-5">
+    <div class="container">
+        <!-- Order Info -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0 text-white">Order Summary</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Order ID:</strong> #{{ order.id }}</p>
+                <p><strong>Date:</strong> {{ order.created_at|date:"M d, Y H:i" }}</p>
+                <p><strong>Total:</strong> ${{ order.total_price|intcomma }}</p>
+                <p><strong>Status:</strong>
+                    {% if order.is_paid %}
+                        <span class="badge bg-success">Paid</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+<!-- Products Table -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        <h5 class="mb-0 text-white">Products in this Order</h5>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Product</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                <tr>
+                    <td>{{ item.plane.name }}</td>
+                    <td class="text-center">{{ item.quantity }}</td>
+                    <td class="text-center">${{ item.price|intcomma }}</td>
+                    <td class="text-center">${{ item.total_price|intcomma }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No items in this order.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+        <!-- Billing Address -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0 text-white">Billing Address</h5>
+            </div>
+            <div class="card-body">
+                {% if address %}
+                <p>{{ address.first_name }} {{ address.last_name }}</p>
+                {% if address.company %}<p>{{ address.company }}</p>{% endif %}
+                <p>{{ address.address }}</p>
+                {% if address.apartment %}<p>{{ address.apartment }}</p>{% endif %}
+                <p>{{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
+                <p>{{ address.country }}</p>
+                <p>Email: {{ address.email }}</p>
+                <p>Phone: {{ address.phone }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Bank Payment Instructions -->
+        {% if not order.is_paid and bank %}
+        <div class="card mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">Payment Instructions</h5>
+            </div>
+            <div class="card-body">
+                <p>Please transfer the total amount to the following bank account:</p>
+                <ul>
+                    <li><strong>Bank Name:</strong> {{ bank.bank_name }}</li>
+                    <li><strong>Account Name:</strong> {{ bank.account_name }}</li>
+                    <li><strong>Account Number:</strong> {{ bank.account_number }}</li>
+                    {% if bank.routing_number %}
+                    <li><strong>Routing Number:</strong> {{ bank.routing_number }}</li>
+                    {% endif %}
+                </ul>
+                {% if bank.instructions %}
+                <p><strong>Instructions:</strong> {{ bank.instructions }}</p>
+                {% endif %}
+                <p class="text-warning"><strong>Note:</strong> Once payment is confirmed, your order will be shipped.</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="text-center">
+            <a href="{% url 'orders_page' %}" class="btn btn-primary">Back to Orders</a>
+        </div>
+    </div>
+</section>
+
+{% endblock contents %}

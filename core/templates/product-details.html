@@ -1,0 +1,158 @@
+{% extends "base_sections/base/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+<!-- Page Header Start -->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>{{ plane.name }}</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Shop</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header End -->
+
+<!-- Product Details Start -->
+<section class="product-details">
+    <div class="container">
+        <div class="row">
+            <!-- Product Image -->
+            <div class="col-lg-6 col-xl-6">
+                <div class="product-details__img">
+                    {% if plane.image %}
+                        <img src="{{ plane.image.url }}" alt="{{ plane.name }}" />
+                    {% else %}
+                        <img src="{% static 'assets/images/shop/default-plane.jpg' %}" alt="{{ plane.name }}">
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-lg-6 col-xl-6">
+                <div class="product-details__top">
+                    <h3 class="product-details__title">{{ plane.name }} <span>${{ plane.price|intcomma }}</span></h3>
+                </div>
+                <div class="product-details__review">
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= plane.rating|floatformat:0 %}
+                            <i class="fa fa-star colored-star"></i>
+                        {% else %}
+                            <i class="fa fa-star-o colored-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                    <span>{{ plane.rating }} rating</span>
+                </div>
+                <div class="product-details__content">
+                    <p class="product-details__content-text1">{{ plane.details }}</p>
+                </div>
+
+                <div class="product-details__quantity">
+                    <h3 class="product-details__quantity-title">Quantity</h3>
+                    <div class="quantity-box">
+                        <button type="button" class="sub">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" />
+                        <button type="button" class="add">+</button>
+                    </div>
+                </div>
+
+                <div class="product-details__buttons">
+                    <div class="product-details__buttons-2">
+                        <button class="thm-btn add-to-cart-btn" data-plane-id="{{ plane.id }}">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Details End -->
+
+<!-- Product Description -->
+<section class="product-description">
+    <div class="container">
+        <h3 class="product-description__title">Description</h3>
+        <p class="product-description__text1">{{ plane.details }}</p>
+        <div class="product-description__list">
+            <ul class="list-unstyled">
+                <li><p><span class="icon-right-arrow"></span> Type: {{ plane.type }}</p></li>
+                <li><p><span class="icon-right-arrow"></span> Price: ${{ plane.price|intcomma }}</p></li>
+                <li><p><span class="icon-right-arrow"></span> Category: {{ plane.category.name }}</p></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+$(document).ready(function(){
+
+    // Quantity increase button
+    $('.quantity-box .add').click(function() {
+        let input = $(this).siblings('.quantity-input'); // target input next to this button
+        let current = parseInt(input.val());
+        input.val(current + 1);
+    });
+
+    // Quantity decrease button
+    $('.quantity-box .sub').click(function() {
+        let input = $(this).siblings('.quantity-input');
+        let current = parseInt(input.val());
+        if(current > 1) {
+            input.val(current - 1);
+        }
+    });
+
+    // Add to cart
+    $('.add-to-cart-btn').click(function(e){
+        e.preventDefault();
+        let plane_id = $(this).data('plane-id');
+        let quantity = parseInt($(this).closest('.product-details').find('.quantity-input').val());
+
+        $.ajax({
+            url: "{% url 'add_to_cart' %}",
+            method: "POST",
+            data: {
+                'plane_id': plane_id,
+                'quantity': quantity,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response){
+                if(response.success){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Added to Cart',
+                        text: response.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+
+                    // Update cart count in navbar
+                    const cartCountElem = $('#cart-count');
+                    if(cartCountElem.length) cartCountElem.text(response.cart_count);
+                }
+            },
+            error: function(){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong. Please try again!',
+                });
+            }
+        });
+    });
+
+});
+</script>
+
+{% endblock contents %}

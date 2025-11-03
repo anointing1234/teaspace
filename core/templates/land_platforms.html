@@ -1,0 +1,148 @@
+{% extends "base_sections/base/base.html" %} 
+{% load static %}
+{% block contents %}
+
+  <style>
+    .air-platforms {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+
+    .air-platforms h2 {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .air-platforms p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .engine-section {
+      margin-top: 40px;
+    }
+
+    .engine-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .engine-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .engine-box h4 {
+      color: #003366;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .engine-box a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0056b3;
+      font-weight: 500;
+    }
+
+    .section-title__tagline {
+      color: #0056b3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .engine-img {
+      width: 50%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+  </style>
+
+
+    <!--Page Header Start-->
+    <section class="page-header">
+      <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/land-bg.jpg' %})"></div>
+      <div class="container">
+        <div class="page-header__inner">
+          <h2>Land Platforms</h2>
+          <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><span>/</span></li>
+            <li>Land Platforms</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--Page Header End-->
+
+    <!-- Land Platforms Section Start -->
+    <section class="air-platforms">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="section-title__tagline">Defense Solutions</span>
+          <h2 class="section-title__title">Land Platforms</h2>
+        </div>
+
+        <p>
+          We specialize in extending the life of military gas turbine engines. Among our work with Defense, we operate a
+          Honeywell-approved MRO facility in New Braunfels, Texas for the AGT1500 Electro-Mechanical Fuel System (EMFS)
+          and Oil System.
+        </p>
+
+        <p>
+          In Asia-Pacific, we have held maintenance, repair, and overhaul responsibility for the Honeywell AGT1500
+          automotive gas turbine engine in the Australian Army’s M1A1 Abrams tank since 2014.
+        </p>
+
+        <p>
+          To ensure your on-time performance is the best it can be, we deliver an end-to-end engineering, repair, and
+          manufacturing capability.
+        </p>
+
+        <p><a href="#">Learn more about our one-stop overhaul and repair services for fast tank gas turbine engines.</a></p>
+
+        <div class="engine-section">
+          <h3>Engines and Test Cells</h3>
+          <p>MRO and test capabilities for fast tank gas turbine engines.</p>
+
+          <div>
+                <img src="{% static 'assets/images/services/honeywell-agt1500.jpg' %}" alt="Honeywell AGT1500" class="engine-img"> 
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="engine-box text-center">
+            <h4>Honeywell AGT1500</h4>
+                <p>We’ve delivered turn-key solutions for AGT1500 engines since 2014.</p>
+                <a href="#">Learn more</a>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="engine-box text-center">
+              <h4>Test Cells</h4>
+                <p>Leading design and installation services for aerospace engine test cells, and upgrade services for
+                  your existing test cell.</p>
+                <a href="#">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-section">
+          <h3>Engine Component Repair</h3>
+       
+          <p>An extensive repair capability for almost any aerospace engine component.</p>
+          <a href="#">Learn more</a>
+        </div>
+      </div>
+    </section>
+    <!-- Land Platforms Section End -->
+
+       {% endblock contents %}

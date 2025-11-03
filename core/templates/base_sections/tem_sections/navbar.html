@@ -1,0 +1,89 @@
+{% load static %}
+<header class="main-header">
+  <nav class="main-menu">
+    <div class="main-menu__wrapper">
+      <div class="main-menu__wrapper-inner">
+        <div class="main-menu__left">
+          <div class="main-menu__logo">
+            <a href="{% url 'home' %}">
+              <img src="{% static 'assets/images/resources/logo-2.png' %}" alt="TAE Aerospace Logo">
+            </a>
+          </div>
+        </div>
+
+        <div class="main-menu__main-menu-box">
+          <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+          <ul class="main-menu__list">
+            <li class="{% if request.resolver_match.url_name == 'home' %}current{% endif %}">
+              <a href="{% url 'home' %}">Home</a>
+            </li>
+
+            <li class="dropdown {% if request.resolver_match.url_name in 'careers news approvals profile' %}current{% endif %}">
+              <a href="#">About Us</a>
+              <ul class="shadow-box">
+                <li><a href="{% url 'careers' %}">Careers</a></li>
+                <li><a href="{% url 'news' %}">News & Insights</a></li>
+                <li><a href="{% url 'approvals' %}">Approvals</a></li>
+                <li><a href="{% url 'profile' %}">Company Profile</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown {% if request.resolver_match.url_name in 'airplatforms land_platforms' %}current{% endif %}">
+              <a href="#">Defense</a>
+              <ul class="shadow-box">
+                <li><a href="{% url 'airplatforms' %}">Air Platforms</a></li>
+                <li><a href="{% url 'land_platforms' %}">Land Platforms</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown {% if request.resolver_match.url_name in 'fixed_wing rotary_wing' %}current{% endif %}">
+              <a href="#">Commercial</a>
+              <ul class="shadow-box">
+                <li><a href="{% url 'fixed_wing' %}">Fixed Wing</a></li>
+                <li><a href="{% url 'rotary_wing' %}">Rotary Wing</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown {% if request.resolver_match.url_name == 'products' %}current{% endif %}">
+              <a href="#">Shop</a>
+              <ul class="shadow-box">
+                <li><a href="{% url 'products' %}">Products</a></li>
+                      {% if not request.user.is_authenticated %}
+
+                   {% else %}  
+                <li>
+    <a href="{% url 'cart' %}" class="active">
+        My Cart
+        <span id="cart-count" class="badge">
+            {% if request.user.is_authenticated %}
+                {% with user_cart=request.user.carts.first %}
+                    {% if user_cart %}
+                        {{ user_cart.items.count }}
+                    {% else %}
+                        0
+                    {% endif %}
+                {% endwith %}
+            {% else %}
+                0
+            {% endif %}
+        </span>
+    </a>
+</li>
+ <li><a href="{% url 'orders_page' %}">My orders</a></li>
+
+{% endif %}
+              </ul>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'contact' %}current{% endif %}">
+              <a href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
+
+
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

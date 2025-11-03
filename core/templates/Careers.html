@@ -1,0 +1,126 @@
+{% extends "base_sections/base/base.html" %} 
+{% load static %}
+{% block contents %}
+
+  <style>
+    /* Careers Section Styling */
+    .careers-section {
+      padding: 80px 0;
+    }
+
+    .careers-section .section-title {
+      margin-bottom: 40px;
+    }
+
+    .careers-section p {
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .careers-section h3 {
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .careers-section a.thm-btn {
+      margin-top: 15px;
+      display: inline-block;
+    }
+  </style>
+
+
+
+    
+
+    <!--Page Header Start-->
+    <section class="page-header">
+      <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+      <div class="container">
+        <div class="page-header__inner">
+          <h2>Careers</h2>
+          <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><span>/</span></li>
+            <li>Careers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--Page Header End-->
+
+    <!--Careers Section Start-->
+    <section class="careers-section">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2 class="section-title__title">Build Your Career with TAE Aerospace</h2>
+        </div>
+
+        <div class="careers-content">
+          <p>Do you want to build your career in one of the world’s most ambitious aerospace companies? Our commitment is
+            to always uphold the highest quality and safety standards. This promise is not only to our customers but
+            also to our growing team of more than 350 people across Asia-Pacific and the Americas.</p>
+
+          <p>We’re always looking for talented team members with a dedication to service and a passion for growth and
+            results. If this sounds like you, submit your application today!</p>
+
+          <a href="#" class="thm-btn">View our current opportunities</a>
+
+          <h3>Working at TAE Aerospace</h3>
+          <p>We are recognised around the world as an aerospace company that creates value through our innovative
+            thinking and exceptional quality products and services. At TAE Aerospace, we recognise that business success
+            is built on the depth of knowledge, capability and commitment of employees, and a culture that fosters
+            creative thinking, collaboration and engagement.</p>
+
+          <p>We proudly support ADF Reserves and Veterans through our Gold Membership with the Australia Defence Force
+            Reserves and Employer Support Program, including paid Defence Reservist Leave.</p>
+
+          <p>With our large scope of programs including engine maintenance, airline wheels and brakes, fuel controls and
+            components, electromechanical components, fire protection and rescue systems, test cell design and upgrades,
+            advanced manufacturing and specialised engineering, we offer a variety of career opportunities in servicing
+            our defence and commercial customers.</p>
+
+          <p>Our commitment—<strong>rely on us to keep you flying</strong>—is at the core of who we are and how we go
+            about our work. Whether it is safety, quality or support, our people consistently deliver.</p>
+
+          <p>Looking after our mates is important to everyone at TAE Aerospace. Through our <em>You First</em> Program,
+            we foster a rewarding, enjoyable and fun work environment that supports safe, healthy and active lifestyles.
+          </p>
+
+          <p>We are dedicated to maintaining a highly skilled and talented workforce. Our learning and development
+            program helps employees grow the skills and behaviours needed to perform at a high standard.</p>
+
+          <p>We also celebrate outstanding contributions through recognition programs, awards, and employee benefits.
+          </p>
+
+          <p>We are committed to an inclusive culture that promotes the skills and capabilities of all people. Everyone
+            has the opportunity to succeed, and diversity enhances our effectiveness and collaboration.</p>
+
+          <p>By working together across the globe, investing and providing opportunity for our people, we truly set
+            ourselves apart from the rest.</p>
+
+          <p><strong>Be part of something bigger.</strong> TAE Aerospace is proud to be part of the ASDAM Group, a
+            leading sovereign defence and aerospace enterprise. This connection expands your career potential and gives
+            you the opportunity to contribute to a broader mission supporting Australia’s defence capability.</p>
+
+          <p>Wherever you are in the world, you can rely on us to keep you flying in your career!</p>
+
+          <a href="#" class="thm-btn">View our current opportunities</a>
+
+          <h3>Get in Touch</h3>
+          <p>For career enquiries, contact us via <a href="mailto:hr-support@asdam.com">hr-support@asdam.com</a></p>
+
+          <h3>Applicant Privacy Policy</h3>
+          <p>The privacy of applicants and employees is of utmost importance to us and we are committed to complying with
+            applicable privacy laws. This policy informs you about how we handle and protect the personal information
+            you submit as a job applicant.</p>
+        </div>
+      </div>
+    </section>
+    <!--Careers Section End-->
+
+    {% endblock contents %}
+
+          

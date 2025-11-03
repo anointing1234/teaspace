@@ -1,0 +1,123 @@
+{% extends "base_sections/base/base.html" %} 
+{% load static %}
+{% block contents %}
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/about-us_rely-on-us.jpg' %})"></div>
+      <div class="container">
+        <div class="page-header__inner">
+          <h2>About Us</h2>
+          <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><span>/</span></li>
+            <li>About Us</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="service-details py-5">
+      <div class="container">
+        <div class="row">
+          <!-- Sidebar -->
+          <div class="col-xl-4 col-lg-5">
+            <div class="service-details__left">
+              <div class="service-details__category">
+                <ul class="service-details__category-list list-unstyled">
+                  <li class="active"><a href="{% url 'profile' %}">About Us<span class="fas fa-angle-right"></span></a></li>
+               </ul>
+              </div>
+
+              <div class="service-details__need-help mt-5">
+                <div class="service-details__need-help-bg" style="background-image: url({% static 'assets/images/backgrounds/about-us_rely-on-us.jpg' %})"></div>
+                <div class="service-details__need-help-icon">
+                  <span class="icon-phone-call"></span>
+                </div>
+                <h2 class="service-details__need-help-title">Need Assistance?<br>We’re here 24/7</h2>
+                <div class="service-details__need-help-contact">
+                  <p>Call us anytime</p>
+                  <a href="tel:+14808170300">+1 (480) 817-0300</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="col-xl-8 col-lg-7">
+            <div class="service-details__right">
+              <div class="service-details__content-box">
+                <div class="service-details__img mb-4">
+                  <img src="{% static 'assets/images/services/service-details-img-4.jpg' %}" alt="About TAE Aerospace" class="img-fluid rounded shadow-sm">
+                </div>
+
+                <h3 class="service-details__title mb-4">About Us</h3>
+
+                <div class="service-details__text">
+                  <p>
+                    We are an aerospace company with a reputation for quality, technical excellence, and unmatched customer support. 
+                    We offer premium quality products and services in aerospace engineering, manufacturing, turbine engine and component MRO, 
+                    and fire protection systems across our Commercial and Defence capabilities. 
+                    We help customers from airlines, regional commuters, freighters, and general aviation, 
+                    to agricultural operators and defence forces around the world.
+                  </p>
+
+                  <h4 class="mt-4">Rely on us for quality and safety</h4>
+                  <p>
+                    Quality, safety and service are our top priorities at TAE Aerospace. 
+                    To support the highest quality and safety standards, we maintain a broad suite of regulatory approvals 
+                    and partnerships with multiple OEMs.
+                  </p>
+                  <p><a href="#" class="thm-btn mt-2">See our full list of regulatory and OEM approvals</a></p>
+
+                  <h4 class="mt-5">Rely on us for technical expertise</h4>
+                  <p>
+                    Customers and OEMs recognize that our aerospace products and services are delivered by a highly-skilled technical workforce. 
+                    We are the world’s largest Honeywell-authorized TPE331 engine support provider, 
+                    and the only Licensed Repair Service Facility for TPE331 fuel controls with both Woodward and Honeywell approvals.
+                  </p>
+
+                  <h4 class="mt-5">Rely on us for 24/7 support</h4>
+                  <p>
+                    Our commitment is to outstanding quality work delivered with responsive customer service, 24/7. 
+                    We provide timely service and support to our customers across North America, Latin America, 
+                    Canada, Europe, Africa, Australia, New Zealand, and South East Asia.
+                  </p>
+                  <p><a href="#" class="thm-btn mt-2">Access after-sales service and support</a></p>
+
+                  <h4 class="mt-5">Rely on us for experience</h4>
+                  <p>
+                    Based on our experience and expertise, the world’s largest aerospace companies and defense forces choose to partner with us.
+                    We are proud that companies like General Electric, Pratt & Whitney, Honeywell, L3Harris, Collins Aerospace and Boeing; 
+                    and defence forces such as the United States Air Force, Royal Australian Air Force, Australian Army, 
+                    Royal Malaysian Air Force, United States Navy, Royal Thai Navy, and United States National Guard, all place their trust in us.
+                  </p>
+                  <p><a href="#" class="thm-btn mt-2">View our history</a></p>
+
+                  <blockquote class="mt-5 mb-5 p-4 bg-light border-start border-3 border-primary">
+                    “I am impressed by the excellent quality product and commitment to the program that TAE Aerospace delivers.”
+                    <footer class="blockquote-footer mt-2">Josh Nichols, Program Manager, F-35 Supply Chain, L3Harris, USA</footer>
+                  </blockquote>
+
+                  <h4 class="mt-5">Rely on our local teams and global network</h4>
+                  <p>
+                    Our global headquarters are in Australia and our USA Division, TAE Aerospace Inc., is based in Scottsdale, Arizona. 
+                    We understand the value of having a local specialist team you can rely on. 
+                    It’s important that our operations are managed locally and that we understand our local customer base. 
+                    Our specialized expertise is underpinned by flexible and timely customer support on a global scale.
+                  </p>
+                  <p>
+                    With many sites around the world to lend support, our local teams are in a better position than ever 
+                    to deliver you an exceptional customer experience.
+                  </p>
+                  <p><a href="#" class="thm-btn mt-2">View our US capability profile</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+       {% endblock contents %}

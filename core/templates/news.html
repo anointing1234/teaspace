@@ -1,0 +1,288 @@
+{% extends "base_sections/base/base.html" %} 
+{% load static %}
+{% block contents %}
+
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <h2>News & Insights</h2>
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>News</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--News Page Start-->
+<section class="news-page">
+  <div class="container">
+    <div class="section-title text-center">
+      <span class="section-title__tagline">From the Blog Posts</span>
+      <h2 class="section-title__title">Latest News & Insights</h2>
+    </div>
+
+    <div class="row">
+
+      <!--News Item 1-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/f135-engine.jpg' %}" alt="F135 Engine Depot">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">Australia’s F135 Engine Depot Achieves Initial Depot Capability (IDC)</a>
+            </h3>
+            <p>
+              TAE Aerospace announced today it has successfully achieved all Initial Depot Capability (IDC)
+              requirements for the repair and overhaul of the Pratt & Whitney F135 engine, which powers all three
+              variants of the F-35 Lightning II fighter aircraft.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 2-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/swa-acquisition.jpg' %}" alt="Southwest Airmotive Acquisition">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">TAE Aerospace Acquires Arizona’s Southwest Airmotive</a>
+            </h3>
+            <p>
+              TAE Aerospace is delighted to announce it has completed the purchase of Southwest Airmotive Corporation
+              (SWA) of Eloy, Arizona—expanding its PT6 MRO capability across the United States.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 3-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/mro-award.jpg' %}" alt="MRO Centre Award">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">Defense Propulsion MRO Centre of Excellence Wins National Award</a>
+            </h3>
+            <p>
+              In partnership with the Joint Strike Fighter Branch, TAE Aerospace's Defense Propulsion MRO Centre of
+              Excellence has won a national award for excellence in defence support.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 4-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/land-support.jpg' %}" alt="Land Domain MRO">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">Aerospace MRO Expands Support in Land Domain</a>
+            </h3>
+            <p>
+              Sharing MRO expertise and facilities between Air and Land platforms provides major benefits to Defence.
+              TAE’s CEO Andrew Sanderson explains how this integrated approach is reshaping support.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 5-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="500ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/ge-partnership.jpg' %}" alt="GE Partnership Recognition">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">GE Partnership Recognised by U.S. Ambassador Visit and Award</a>
+            </h3>
+            <p>
+              The last week of November marked celebration with OEM partner GE—highlighted by a visit from the U.S.
+              Ambassador and a prestigious Australian industry award.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 6-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/20-years.jpg' %}" alt="F/A 18 Support">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">TAE Aerospace to Support US Navy’s F/A 18 Super Hornets</a>
+            </h3>
+            <p>
+              In an arrangement believed to be the first of its kind outside the U.S., TAE Aerospace will provide
+              maintenance for selected F/A 18 engine parts alongside GE Aviation.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 7-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="700ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/21_Years.jpg' %}" alt="20 Years Celebration">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">Celebrating 20 Years in the Aerospace Industry</a>
+            </h3>
+            <p>
+              From humble beginnings in 2000 to a global aerospace leader, TAE Aerospace celebrates two decades of
+              innovation, quality and service to Defence and commercial aviation.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 8-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/post_covid-19.jpg' %}" alt="COVID-19 Response">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">COVID-19 Response – A Message from Our Chief Risk Officer</a>
+            </h3>
+            <p>
+              Our highest priority during these uncertain times is the health and well-being of our people, customers,
+              and communities. Chief Risk Officer John Hall outlines our proactive response.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 9-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="900ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/supply-chain.jpg' %}" alt="Aerospace Supply Chain">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">Insights into Australia’s Global Aerospace Supply Chain Position</a>
+            </h3>
+            <p>
+              CEO Andrew Sanderson shared insights at MRO Australasia on recovering Australia’s competitiveness in the
+              global aerospace MRO market and rebuilding industry resilience.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 10-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1000ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/ge-approval.jpg' %}" alt="GE Approval M601 H80 Engines">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">New GE Approval for M601 and H80 Series Engines</a>
+            </h3>
+            <p>
+              Following a new agreement with GE, TAE Aerospace now holds DRC approval for M601 and H80 engines across
+              the United States, Canada, and Latin America.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 11-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1100ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/f135-module.jpg' %}" alt="F135 Engine Module">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">Our First F135 Engine Module Repair Is Now Complete</a>
+            </h3>
+            <p>
+              Assigned as the Asia-Pacific Region’s F135 MRO&U depot in 2015, TAE Aerospace has completed its first F135
+              engine module repair in partnership with Pratt & Whitney and the Australian Government.
+            </p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--News Item 12-->
+      <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1200ms">
+        <div class="blog-one__single">
+          <div class="blog-one__img">
+            <img src="{% static 'assets/images/backgrounds/training.jpg' %}" alt="Technical Training">
+            <a href="#"><span class="blog-one__plus"></span></a>
+          </div>
+          <div class="blog-one__content">
+            <h3 class="blog-one__title">
+              <a href="#">Thorough Technical Training Can Reduce Maintenance Costs</a>
+            </h3>
+            <p>
+              Whether you operate one agricultural aircraft or an entire fleet, thorough technical training equips your
+              team to identify and resolve issues early—saving costs and improving reliability.
+            </p>
+         
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  
+
+  </div>
+</section>
+<!--News Page End-->
+
+
+
+          {% endblock contents %}

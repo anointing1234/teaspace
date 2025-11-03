@@ -1,0 +1,258 @@
+{% extends "base_sections/base/base.html" %} 
+{% load static %}
+{% block contents %}
+
+  <style>
+    .fixed-wing {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+
+    .fixed-wing h2 {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .fixed-wing h3 {
+      color: #003366;
+      font-weight: 600;
+      margin-top: 40px;
+    }
+
+    .fixed-wing p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .section-title__tagline {
+      color: #0056b3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .hero-content {
+      margin-bottom: 50px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+
+    .service-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+
+    .service-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-box h5 {
+      color: #003366;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .service-box a {
+      color: #0056b3;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .service-box a:hover {
+      text-decoration: underline;
+    }
+
+    .list-unstyled li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+ 
+
+    @media (max-width: 768px) {
+      .hero-image {
+        margin-top: 30px;
+      }
+    }
+  </style>
+
+
+    <!--Page Header Start-->
+    <section class="page-header">
+      <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/fixed_fly.jpg' %})"></div>
+      <div class="container">
+        <div class="page-header__inner">
+          <h2>Fixed Wing</h2>
+          <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><span>/</span></li>
+            <li>Commercial</li>
+            <li><span>/</span></li>
+            <li>Fixed Wing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--Page Header End-->
+
+    <!-- Fixed Wing Section Start -->
+    <section class="fixed-wing">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="section-title__tagline">Commercial Aviation</span>
+          <h2 class="section-title__title">Fixed Wing</h2>
+        </div>
+
+        <!-- Hero: Image + Text Side by Side -->
+        <div class="row align-items-center hero-content">
+          <div class="col-lg-6">
+            <h3>A one-stop-shop to keep you flying</h3>
+            <p>
+              Fixed wing operators rely on our global maintenance teams for quality engine and component MRO, fast response times and expert technical support.
+            </p>
+            <p>
+              We’re a one-stop-shop to support your engine 24/7 and keep you flying.
+            </p>
+          </div>
+          <div class="col-lg-6 hero-image">
+            <img src="{% static 'assets/images/services/fixed-wing-hero.jpg' %}" alt="Fixed Wing Aircraft Maintenance">
+          </div>
+        </div>
+
+        <!-- Engines & Test Cells -->
+        <h3>Engines & Test Cells</h3>
+        <p>We offer a complete repair, overhaul and test capability for a range of fixed wing aircraft engines.</p>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Honeywell TPE331</h5>
+              <p>Comprehensive, OEM-backed maintenance, repair, overhaul and technical training capabilities for your TPE331 engine.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Pratt & Whitney PT6A</h5>
+              <p>Responsive, worldwide engine and component maintenance support for PT6A engine operators.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>GE M601 and H80 Series</h5>
+              <p>Reliable engine maintenance and technical support services for your M601 and H80 series engines.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Honeywell TFE731</h5>
+              <p>Timely support for your TFE731 engine from our Honeywell approved facility in Anchorage, Alaska.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Test Cells</h5>
+              <p>An OEM correlated, multi-engine dynamometer equipped test cell to ensure peak engine performance.</p>
+            
+            </div>
+          </div>
+        </div>
+
+        <!-- Engine Components -->
+        <h3>Engine Components</h3>
+        <p>Leading engine component maintenance and repair facilities for TPE331 and PT6A engines worldwide, with multiple airworthiness and repair station approvals.</p>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Fuel Controls & Governors</h5>
+              <p>OEM-backed fuel controls, propellor & overspeed governors to keep you flying safely.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Line Replaceable Units</h5>
+              <p>State-of-the-art LRU component maintenance and repair facilities and a growing component exchange program.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Machining & Repair</h5>
+              <p>Leading engine component maintenance, machining and repair facilities backed by responsive customer support.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Fuel Nozzles</h5>
+              <p>A turbine engine fuel nozzle maintenance facility with FAA, EASA and CASA approvals.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Electromechanical Components</h5>
+              <p>Fast turn times and quality MRO services for your aircraft’s electromechanical components.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Starter Generators</h5>
+              <p>Reliable overhaul and repair for starter generators across multiple platforms.</p>
+            
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Avionics</h5>
+              <p>Expert avionics support and upgrades for enhanced safety and performance.</p>
+            
+            </div>
+          </div>
+        </div>
+
+        <!-- Wheels & Brakes -->
+        <h3>Airline Wheels & Brakes</h3>
+        <p>Complete, fixed-price solutions for specific wheels and brakes, from a simple tire change to full component overhaul.</p>
+        <ul class="list-unstyled">
+          <li>Commercial aircraft</li>
+          <li>Military aircraft</li>
+        </ul>
+
+        <!-- Parts Supply & Sales -->
+        <h3>Parts Supply & Sales</h3>
+        <p>Responsive parts supply and sales 24/7, and a large engine rental pool to keep you flying.</p>
+      
+
+        <!-- Specialized Services -->
+        <h3>Specialized Services</h3>
+        <p>Specialized services for fixed wing aircraft operators.</p>
+        <ul class="list-unstyled">
+          <li>Technical training for TPE331 operators</li>
+          <li>Ag aviation services</li>
+          <li>Field service</li>
+        </ul>
+      </div>
+    </section>
+    <!-- Fixed Wing Section End -->
+
+      {% endblock contents %}

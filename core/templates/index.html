@@ -1,0 +1,1071 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAE Aerospace | Global Aerospace Engineering & MRO Solutions</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/apple-touch-icon.png' %}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/favicon-32x32.png' %}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/favicon-16x16.png' %}" />
+  <link rel="manifest" href="{% static 'assets/images/favicons/site.webmanifest' %}" />
+
+  <!-- Meta Description for SEO -->
+  <meta name="description"
+    content="TAE Aerospace is a global aerospace company providing high-quality MRO, engineering, and manufacturing services for commercial and defense platforms worldwide." />
+
+  <!-- Keywords (Optional SEO Enhancement) -->
+  <meta name="keywords"
+    content="TAE Aerospace, Aerospace Engineering, Turbine Engines, MRO Services, Defense, Manufacturing, Fixed Wing, Rotary Wing" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor Styles -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/animate/animate.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/animate/custom-animate.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/fontawesome/css/all.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/jarallax/jarallax.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/nouislider/nouislider.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/nouislider/nouislider.pips.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/odometer/odometer.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/swiper/swiper.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/jetly-icons/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/tiny-slider/tiny-slider.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/reey-font/stylesheet.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel/owl.theme.default.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/bxslider/jquery.bxslider.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap-select/css/bootstrap-select.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/vegas/vegas.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/jquery-ui/jquery-ui.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/timepicker/timePicker.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/vendors/nice-select/nice-select.css' %}" />
+
+  <!-- Template Styles -->
+  <link rel="stylesheet" href="{% static 'assets/css/jetly.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/jetly-responsive.css' %}" />
+
+<style>
+
+/* Add the dark overlay */
+.image-layer-three::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* Adjust darkness: 0.4–0.7 recommended */
+  z-index: 2;
+}
+
+
+.badge {
+    display: inline-block;
+    background-color: #ff4d4f; /* red badge */
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 6px 6px;
+    border-radius: px;
+    margin-left: 5px; /* space between text and number */
+}
+
+.thm-btn {
+  display: inline-block;
+  background:#E4231A;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.thm-btn:hover {
+  background:#E4231A;
+  color: #fff;
+}
+
+.thm-btn--outline {
+  background: transparent;
+  border: 2px solid #E4231A;
+  color:#E4231A;
+}
+
+.thm-btn--outline:hover {
+  background:#E4231A;
+  color: #fff;
+}
+
+.thm-btn--sm {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+
+    </style>
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+
+
+
+
+    <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+    <!-- /.preloader -->
+
+
+    <div class="page-wrapper">
+        <header class="main-header-three">
+            <div class="main-header-three__top">
+                <div class="main-header-three__top-inner">
+                    <div class="main-header-three__top-left">
+                        <ul class="list-unstyled main-header-three__contact-list">
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="text">
+                                    <p style="color: black;">TAE Aerospace, Inc.
+7879 E Beck Ln, Scottsdale, 
+AZ 85260, United States
+</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="text">
+                                    <p><a style="color: black;" href="mailto:info@taesaerospace.com">info@taesaerospace.com</a></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                   
+                </div>
+            </div>
+            
+            <nav class="main-menu main-menu-three bg-white">
+                <div class="main-menu-three__wrapper">
+                    <div class="main-menu-three__wrapper-inner">
+                        <div class="main-menu-three__left">
+                            <div class="main-menu-three__logo">
+                                <a style="width: 50px;" href="{% url 'home' %}"><img src="{% static 'assets/images/resources/logo-2.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="main-menu-three__main-menu-box">
+                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                           <ul class="main-menu__list">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="dropdown">
+                  <a href="#">About Us</a>
+                  <ul class="shadow-box">
+                    <li><a href="{% url 'careers' %}">Careers</a></li>
+                    <li><a href="{% url 'news' %}">News & Insights</a></li>
+                    <li><a href="{% url 'approvals' %}">Approvals</a></li>
+                    <li><a href="{% url 'profile' %}">Company Profile</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Defense</a>
+                  <ul class="shadow-box">
+                    <li><a href="{% url 'airplatforms' %}">Air Platforms</a></li>
+                    <li><a href="{% url 'airplatforms' %}">Land Platforms</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Commercial</a>
+                  <ul class="shadow-box">
+                    <li><a href="{% url 'fixed_wing' %}" class="active">Fixed Wing</a></li>
+                    <li><a href="{% url 'rotary_wing' %}">Rotary Wing</a></li>
+                  </ul>
+                </li>
+                 <li class="dropdown">
+                  <a href="#">Shop</a>
+                  <ul class="shadow-box">
+                    <li><a href="{% url 'products' %}" class="active">Products</a></li>
+                   {% if not request.user.is_authenticated %}
+
+                   {% else %}
+                    <li>
+    <a href="{% url 'cart' %}" class="active">
+        My Cart
+        <span id="cart-count" class="badge">
+            {% if request.user.is_authenticated %}
+                {% with user_cart=request.user.carts.first %}
+                    {% if user_cart %}
+                        {{ user_cart.items.count }}
+                    {% else %}
+                        0
+                    {% endif %}
+                {% endwith %}
+            {% else %}
+                0
+            {% endif %}
+        </span>
+    </a>
+</li>
+
+ <li><a href="{% url 'orders_page' %}">My orders</a></li>
+ {% endif %}
+                  </ul>
+                </li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+                        </div>
+                        <div class="main-menu-three__right">
+                      <div class="main-menu-three__search-cart-box">
+     
+
+                  <!-- User Profile / Login Buttons -->
+                  {% if request.user.is_authenticated %}
+                      <div class="user-profile ms-3">
+                          <a href="{% url 'profile' %}">
+                              <img src="{% if request.user.profile_pic %}{{ request.user.profile_pic.url }}{% else %}{% static 'assets/images/icon/profile _pic.jpg' %}{% endif %}" 
+                                  alt="Profile" class="rounded-circle" style="width:40px; height:40px; object-fit:cover; border:2px solid #007bff;">
+                          </a>
+                      </div>
+                  {% else %}
+
+                  {% endif %}
+                   </div>
+                  </div>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="stricky-header stricked-menu main-menu main-menu-three">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+ <!--Main Slider Start-->
+<section class="main-slider-three clearfix">
+  <div class="swiper-container thm-swiper__slider" data-swiper-options='{
+        "slidesPerView": 1,
+        "allowTouchMove": false,
+        "loop": false,
+        "effect": "fade",
+        "pagination": {
+            "el": "#main-slider-pagination",
+            "type": "bullets",
+            "clickable": true
+        },
+        "navigation": {
+            "nextEl": "#main-slider__swiper-button-next",
+            "prevEl": "#main-slider__swiper-button-prev"
+        }}'>
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="image-layer-three"
+          style="background-image: url({% static 'assets/images/backgrounds/cloud-1.jpeg' %});">
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8">
+              <div class="main-slider-three__content">
+                <p class="main-slider-three__sub-title text-white">Global Aerospace Excellence</p>
+                <h2 class="main-slider-three__title text-white">
+                  Engineering the Future<br>of Flight Support
+                </h2>
+                <p class="main-slider-three__text text-white">
+                  Proudly serving Commercial and Defense customers worldwide with advanced MRO
+                  capabilities, OEM partnerships, and technical expertise that keep you flying.
+                </p>
+                <div class="main-slider-three__btn-box mt-5">
+                  {% if not request.user.is_authenticated %}
+              <a href="{% url 'login' %}" class="thm-btn thm-btn--sm me-2">Login</a>
+              <a href="{% url 'signup' %}" class="thm-btn thm-btn--sm thm-btn--outline">Sign Up</a>
+                 {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="image-layer-three float-bob-x"
+          style="background-image: url({% static 'assets/images/backgrounds/main-slider-3-1.webp' %});">
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8">
+              <div class="main-slider-three__content">
+                <p class="main-slider-three__sub-title text-white">Trusted Worldwide</p>
+                <h2 class="main-slider-three__title text-white">
+                  Powering Aircraft<br>Performance & Reliability
+                </h2>
+                <p class="main-slider-three__text text-white">
+                  With dedicated teams in 11 locations, TAE Aerospace delivers dependable support
+                  and exceptional service for your aviation needs.
+                </p>
+                <div class="main-slider-three__btn-box">
+                    <a href="{% url 'login' %}" class="thm-btn thm-btn--sm me-2">Login</a>
+                    <a href="{% url 'signup' %}" class="thm-btn thm-btn--sm thm-btn--outline">Sign Up</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--Main Slider End-->
+
+
+        
+
+        <!--About Three Start-->
+<section class="about-three">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Left Image Section -->
+      <div class="col-xl-6">
+        <div class="about-three__left">
+          <div class="about-three__img-box wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
+            <div class="about-three__img">
+              <img src="{% static 'assets/images/resources/about-three-1.jpg' %}" alt="TAE Aerospace Facility">
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Text Section -->
+      <div class="col-xl-6">
+        <div class="about-three__right">
+          <div class="section-title text-left">
+            <span class="section-title__tagline">About TAE Aerospace</span>
+            <h2 class="section-title__title">Delivering Excellence in Aerospace Engineering & Support</h2>
+          </div>
+          <p class="about-three__text-one">
+            TAE Aerospace is a global company proudly serving Commercial and Defense customers with world-class MRO
+            capabilities, component repair, and turbine engine services.
+          </p>
+          <p class="about-three__text-two">
+            With a highly skilled technical workforce and trusted OEM partnerships, we deliver reliable, innovative, and
+            cost-effective solutions that keep your operations flying safely and efficiently.
+          </p>
+          <ul class="about-three__points list-unstyled">
+            <li>
+              <div class="about-three__points-icon">
+                <span class="icon-technical-support"></span>
+              </div>
+              <div class="about-three__points-text">
+                <h3>Global Expertise</h3>
+                <p>Supporting aviation customers in over 11 locations worldwide with unmatched technical capability.</p>
+              </div>
+            </li>
+            <li>
+              <div class="about-three__points-icon">
+                <span class="icon-safety"></span>
+              </div>
+              <div class="about-three__points-text">
+                <h3>Proven Reliability</h3>
+                <p>Backed by decades of aerospace experience and rigorous quality assurance processes.</p>
+              </div>
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--About Three End-->
+
+
+       
+
+       
+
+        <!--Capabilities Start-->
+<section class="charters capabilities">
+  <div class="container">
+    <div class="section-title text-center">
+      <span class="section-title__tagline">Our Capabilities</span>
+      <h2 class="section-title__title">Comprehensive Aerospace<br>Support and Maintenance</h2>
+    </div>
+
+    <div class="row">
+      <!-- Fixed Wing -->
+      <div class="col-xl-3 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
+        <div class="charters__single">
+          <div class="charters__img">
+            <img src="{% static 'assets/images/resources/fixed-wing.jpg' %}" alt="Fixed Wing Aircraft">
+          </div>
+          <div class="charters__content">
+            <p class="charters__date">Fixed Wing</p>
+            <h3 class="charters__title"><a href="{% url 'fixed_wing' %}">Engine & Component Services</a></h3>
+            <p class="charters__text">
+              Partner with the world’s largest TPE331 engine service provider for maintenance, repair, and training.
+              Expertise includes PT6A, H80 engines, wheels, brakes, and fire protection systems.
+            </p>
+            <a href="{% url 'fixed_wing' %}" class="thm-btn charters__btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rotary Wing -->
+      <div class="col-xl-3 col-lg-6 wow fadeInUp" data-wow-delay="200ms">
+        <div class="charters__single">
+          <div class="charters__img">
+            <img src="{% static 'assets/images/resources/rotary-wing.jpg' %}" alt="Rotary Wing Helicopter">
+          </div>
+          <div class="charters__content">
+            <p class="charters__date">Rotary Wing</p>
+            <h3 class="charters__title"><a href="{% url 'rotary_wing' %}">Helicopter Power Systems</a></h3>
+            <p class="charters__text">
+              Honeywell-authorized FCU and PTG overhaul services for M250, LTS101, and PT6T engines — over 30 years of
+              trusted expertise and dual AWARS accreditation.
+            </p>
+            <a href="{% url 'rotary_wing' %}" class="thm-btn charters__btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Defense Air Platforms -->
+      <div class="col-xl-3 col-lg-6 wow fadeInUp" data-wow-delay="300ms">
+        <div class="charters__single">
+          <div class="charters__img">
+            <img src="{% static 'assets/images/resources/defense-air.jpg' %}" alt="Defense Air Platform">
+          </div>
+          <div class="charters__content">
+            <p class="charters__date">Defense Capabilities</p>
+            <h3 class="charters__title"><a href="{% url 'airplatforms' %}">Air Platforms</a></h3>
+            <p class="charters__text">
+              Support for F404/F414, TPE331, and F135 engines with industry-leading overhaul and testing. 
+              Helping defense forces reduce maintenance costs and increase time-on-wing.
+            </p>
+            <a href="{% url 'airplatforms' %}" class="thm-btn charters__btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Land Platforms -->
+      <div class="col-xl-3 col-lg-6 wow fadeInUp" data-wow-delay="400ms">
+        <div class="charters__single">
+          <div class="charters__img">
+            <img src="{% static 'assets/images/resources/land-platform.jpg' %}" alt="Defense Land Platform">
+          </div>
+          <div class="charters__content">
+            <p class="charters__date">Defense Systems</p>
+            <h3 class="charters__title"><a href="{% url 'airplatforms' %}">Land Platforms</a></h3>
+            <p class="charters__text">
+              Proven repair and test solutions for AGT1500 engines and HUMS technology, supporting M1A1 Abrams
+              tanks since 2014 with integrated fire protection systems.
+            </p>
+            <a href="{% url 'airplatforms' %}" class="thm-btn charters__btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--Capabilities End-->
+
+
+
+  <!--Testimonial One Start-->
+<section class="testimonial-one">
+  <div class="testimonial-one__shape-1 zoom-fade-2">
+    <img src="{% static 'assets/images/shapes/testimonial-shape-1.png' %}" alt="">
+  </div>
+  <div class="testimonial-one__shape-2 float-bob-x">
+    <img src="{% static 'assets/images/shapes/testimonial-shape-2.png' %}" alt="">
+  </div>
+  <div class="testimonial-one__shape-3 float-bob-x">
+    <img src="{% static 'assets/images/shapes/testimonial-shape-3.png' %}" alt="">
+  </div>
+  <div class="container">
+    <div class="section-title text-center">
+      <span class="section-title__tagline">Customer Feedback</span>
+      <h2 class="section-title__title">What our clients say<br> about our aerospace services</h2>
+    </div>
+    <div class="testimonial-one__bottom">
+      <div class="testimonial-one__shape-4" style="background-image: url({% static 'assets/images/shapes/testimonial-shape-4.png' %});"></div>
+      <div class="testimonial-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+        "loop": true,
+        "autoplay": true,
+        "margin": 30,
+        "nav": false,
+        "dots": false,
+        "smartSpeed": 500,
+        "autoplayTimeout": 10000,
+        "responsive": {
+          "0": {"items": 1},
+          "768": {"items": 1},
+          "992": {"items": 2},
+          "1200": {"items": 2}
+        }
+      }'>
+
+        <!-- Michael S. Laver -->
+        <div class="item">
+          <div class="testimonial-one__single">
+            <div class="testimonial-one__client-img-box">
+              <div class="testimonial-one__img">
+             
+                <div class="testimonial-one__icon-box"><span class="icon-quote"></span></div>
+              </div>
+            </div>
+            <div class="testimonial-one__content">
+              <p class="testimonial-one__content-text">
+                “Air 1st Aviation operates nine MU2 twin-engine turboprops for the U.S. Air Force with a 100% mission success rate over 21 years. This milestone was made possible by the dedication of the TAE Aerospace team in Scottsdale, Arizona. Their professionalism and support are exceptional.”
+              </p>
+              <div class="testimonial-one__rating">
+                <div class="testimonial-one__rating-icon">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="testimonial-one__user">
+                  <div class="testimonial-one__user-name">
+                    <h4>Michael S. Laver</h4>
+                    <p>President, Air 1st Aviation Companies, USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ryan Roche -->
+        <div class="item">
+          <div class="testimonial-one__single">
+            <div class="testimonial-one__client-img-box">
+              <div class="testimonial-one__img">
+            
+                <div class="testimonial-one__icon-box"><span class="icon-quote"></span></div>
+              </div>
+            </div>
+            <div class="testimonial-one__content">
+              <p class="testimonial-one__content-text">
+                “TAE Aerospace consistently exceeds our expectations in customer service, efficiency, and AOG support. Their technical expertise and responsiveness are unmatched in the industry. We’re proud to work with a team that delivers results every time.”
+              </p>
+              <div class="testimonial-one__rating">
+                <div class="testimonial-one__rating-icon">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="testimonial-one__user">
+                  <div class="testimonial-one__user-name">
+                    <h4>Ryan Roche</h4>
+                    <p>GM Fixed-Wing Aircraft, Experience Co, Australia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- George Parker -->
+        <div class="item">
+          <div class="testimonial-one__single">
+            <div class="testimonial-one__client-img-box">
+              <div class="testimonial-one__img">
+            
+                <div class="testimonial-one__icon-box"><span class="icon-quote"></span></div>
+              </div>
+            </div>
+            <div class="testimonial-one__content">
+              <p class="testimonial-one__content-text">
+                “Katie and her team in Midvale have done a fantastic job maintaining my TPE331 engine. Their agricultural aviation background gives them an unmatched understanding of our operational needs. They keep us flying and earning.”
+              </p>
+              <div class="testimonial-one__rating">
+                <div class="testimonial-one__rating-icon">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="testimonial-one__user">
+                  <div class="testimonial-one__user-name">
+                    <h4>George Parker</h4>
+                    <p>Crop Jet Aviation, USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dave Porter -->
+        <div class="item">
+          <div class="testimonial-one__single">
+            <div class="testimonial-one__client-img-box">
+              <div class="testimonial-one__img">
+                
+                <div class="testimonial-one__icon-box"><span class="icon-quote"></span></div>
+              </div>
+            </div>
+            <div class="testimonial-one__content">
+              <p class="testimonial-one__content-text">
+                “I’ve worked with many aerospace maintenance companies, but none make the process as seamless as TAE Aerospace. Their understanding of client needs and technical precision is outstanding. A true 10 out of 10 for service.”
+              </p>
+              <div class="testimonial-one__rating">
+                <div class="testimonial-one__rating-icon">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="testimonial-one__user">
+                  <div class="testimonial-one__user-name">
+                    <h4>Dave Porter</h4>
+                    <p>Chief Engineer, Seair, Australia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paul Bayly -->
+        <div class="item">
+          <div class="testimonial-one__single">
+            <div class="testimonial-one__client-img-box">
+              <div class="testimonial-one__img">
+            
+                <div class="testimonial-one__icon-box"><span class="icon-quote"></span></div>
+              </div>
+            </div>
+            <div class="testimonial-one__content">
+              <p class="testimonial-one__content-text">
+                “We rate TAE Aerospace very highly for their technical excellence and engineering precision. Their consistent performance across defense propulsion systems has made them one of our most trusted partners.”
+              </p>
+              <div class="testimonial-one__rating">
+                <div class="testimonial-one__rating-icon">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="testimonial-one__user">
+                  <div class="testimonial-one__user-name">
+                    <h4>Paul Bayly</h4>
+                    <p>Program Manager, GE Aviation, Australia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kevin Kirkpatrick -->
+        <div class="item">
+          <div class="testimonial-one__single">
+            <div class="testimonial-one__client-img-box">
+              <div class="testimonial-one__img">
+                
+                <div class="testimonial-one__icon-box"><span class="icon-quote"></span></div>
+              </div>
+            </div>
+            <div class="testimonial-one__content">
+              <p class="testimonial-one__content-text">
+                “We are proud to partner with TAE Aerospace on the F135 engine program. Their engineering, maintenance, and sustainment expertise continually impresses us and strengthens our operational success.”
+              </p>
+              <div class="testimonial-one__rating">
+                <div class="testimonial-one__rating-icon">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="testimonial-one__user">
+                  <div class="testimonial-one__user-name">
+                    <h4>Kevin Kirkpatrick</h4>
+                    <p>VP Military Engine Sustainment, Pratt & Whitney, USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- end carousel -->
+    </div>
+  </div>
+</section>
+<!--Testimonial One End-->
+
+
+      <!--Blog Two Start-->
+<section class="blog-two">
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="section-title__tagline">News & Insights</span>
+            <h2 class="section-title__title">Checkout the latest aviation <br>news and updates</h2>
+        </div>
+        <div class="row">
+            <!--Blog One Single Start-->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                <div class="blog-one__single">
+                    <div class="blog-one__img">
+                        <img src="{% static 'assets/images/blog/news-1-1.jpg' %}" alt="">
+                        <a href="{% url 'news' %}">
+                            <span class="blog-one__plus"></span>
+                        </a>
+                    </div>
+                    <div class="blog-one__content">
+                        <div class="blog-one__date">
+                            <p>12 Oct, 2025</p>
+                        </div>
+                        <ul class="blog-one__meta list-unstyled">
+                            <li>
+                                <a href="{% url 'news' %}"><i class="fas fa-user-circle"></i>Admin</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'news' %}"><i class="fas fa-comments"></i>0 Comments</a>
+                            </li>
+                        </ul>
+                        <h3 class="blog-one__title">
+                            <a href="{% url 'news' %}">Australia’s F135 Engine Depot Achieves Initial Depot Capability (IDC)</a>
+                        </h3>
+                        <p class="mt-2">TAE Aerospace announced it has achieved all Initial Depot Capability (IDC) requirements 
+                            for the repair and overhaul of the Pratt & Whitney F135 engine, which powers all variants of the 
+                            F-35 Lightning II fighter aircraft.</p>
+                        <div class="blog-one__btn">
+                            <a href="{% url 'news' %}">Learn more<span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Blog One Single End-->
+
+            <!--Blog One Single Start-->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                <div class="blog-one__single">
+                    <div class="blog-one__img">
+                        <img src="{% static 'assets/images/blog/news-1-2.jpg' %}" alt="">
+                        <a href="{% url 'news' %}">
+                            <span class="blog-one__plus"></span>
+                        </a>
+                    </div>
+                    <div class="blog-one__content">
+                        <div class="blog-one__date">
+                            <p>04 Oct, 2025</p>
+                        </div>
+                        <ul class="blog-one__meta list-unstyled">
+                            <li>
+                                <a href="{% url 'news' %}"><i class="fas fa-user-circle"></i>Admin</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'news' %}"><i class="fas fa-comments"></i>0 Comments</a>
+                            </li>
+                        </ul>
+                        <h3 class="blog-one__title">
+                            <a href="{% url 'news' %}">TAE Aerospace Acquires Arizona’s Southwest Airmotive</a>
+                        </h3>
+                        <p class="mt-2">TAE Aerospace has completed the purchase of Southwest Airmotive Corporation (SWA) of 
+                            Eloy, Arizona — a move that expands its PT6 MRO capability and presence in the United States.</p>
+                        <div class="blog-one__btn">
+                            <a href="{% url 'news' %}">Learn more<span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Blog One Single End-->
+
+            <!--Blog One Single Start-->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                <div class="blog-one__single">
+                    <div class="blog-one__img">
+                        <img src="{% static 'assets/images/blog/news-1-3.jpg' %}" alt="">
+                        <a href="{% url 'news' %}">
+                            <span class="blog-one__plus"></span>
+                        </a>
+                    </div>
+                    <div class="blog-one__content">
+                        <div class="blog-one__date">
+                            <p>25 Sept, 2025</p>
+                        </div>
+                        <ul class="blog-one__meta list-unstyled">
+                            <li>
+                                <a href="{% url 'news' %}"><i class="fas fa-user-circle"></i>Admin</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'news' %}"><i class="fas fa-comments"></i>0 Comments</a>
+                            </li>
+                        </ul>
+                        <h3 class="blog-one__title">
+                            <a href="{% url 'news' %}">Defense Propulsion MRO Centre of Excellence Wins National Award</a>
+                        </h3>
+                        <p class="mt-2">Together with its Defense partner, Joint Strike Fighter Branch, TAE Aerospace’s 
+                            Propulsion MRO Centre of Excellence has received a national award recognizing technical 
+                            excellence in the defense industry.</p>
+                        <div class="blog-one__btn">
+                            <a href="{% url 'news' %}">Learn more<span class="icon-right-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Blog One Single End-->
+        </div>
+    </div>
+</section>
+<!--Blog Two End-->
+  
+
+       
+
+      
+
+        
+
+       <!--Site Footer Start-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div class="site-footer__shape-1 zoom-fade-3">
+        <img src="{% static 'assets/images/shapes/site-footer-shape-1.png' %}" alt="">
+      </div>
+
+      <div class="site-footer__top">
+        <div class="row">
+          <!-- About Section -->
+          <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+            <div class="footer-widget__column footer-widget__about">
+              <div class="footer-widget__logo">
+                <a href="#"><img src="{% static 'assets/images/resources/logo-2.png' %}" alt=""></a>
+              </div>
+              <div class="footer-widget__about-text-box">
+                <p class="footer-widget__about-text">
+                  TAE Aerospace is a privately-owned global aerospace company with facilities across Asia-Pacific and the Americas. We create value through quality products and services in turbine engine and component MRO, aerospace engineering, and advanced manufacturing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explore Section -->
+          <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+            <div class="footer-widget__column footer-widget__Explore">
+              <div class="footer-widget__title-box">
+                <h3 class="footer-widget__title">Explore</h3>
+              </div>
+              <ul class="footer-widget__Explore-list list-unstyled">
+                <li><a href="#">Commercial</a></li>
+                <li><a href="#">Fixed Wing</a></li>
+                <li><a href="#">Rotary Wing</a></li>
+                <li><a href="#">Defense</a></li>
+                <li><a href="#">Air Platforms</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Links Section -->
+          <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+            <div class="footer-widget__column footer-widget__links">
+              <div class="footer-widget__title-box">
+                <h3 class="footer-widget__title">Links</h3>
+              </div>
+              <ul class="footer-widget__Explore-list list-unstyled">
+                <li><a href="#">Land Platforms</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">News & Insights</a></li>
+                <li><a href="#">Approvals</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+            <div class="footer-widget__column footer-widget__Contact">
+              <div class="footer-widget__title-box">
+                <h3 class="footer-widget__title">Contact</h3>
+              </div>
+              <ul class="footer-widget__Contact-list list-unstyled">
+                <li>
+                  <div class="icon">
+                    <span class="fas fa-phone"></span>
+                  </div>
+                  <div class="text">
+                    <p><a href="tel:+14808170300">+14808170300</a></p>
+                  </div>
+                </li>
+                  <li>
+                  <div class="icon">
+                    <span class="fas fa-phone"></span>
+                  </div>
+                  <div class="text">
+                    <p><a href="tel:+14805006677">+14805006677</a></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                  <div class="text">
+                    <p><a href="mailto:needhelp@company.com">info@taesaerospace.com</a></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon">
+                    <span class="fas fa-map-marker"></span>
+                  </div>
+                  <div class="text">
+                    <p>TAE Aerospace, Inc.
+7879 E Beck Ln, Scottsdale, 
+AZ 85260, United States
+</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="site-footer__bottom">
+        <div class="site-footer__bottom-inner">
+          <div class="site-footer__bottom-left">
+            <p class="site-footer__bottom-text">
+              © 2025 TAE Aerospace. All Rights Reserved. | <a href="#">Privacy</a>
+            </p>
+          </div>
+          <div class="site-footer__bottom-right">
+            <div class="site-footer__social">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--Site Footer End-->
+
+
+    </div><!-- /.page-wrapper -->
+
+
+   
+<div class="mobile-nav__wrapper">
+  <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+  <!-- /.mobile-nav__overlay -->
+  <div class="mobile-nav__content">
+    <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+    <div class="logo-box">
+      <a href="{% url 'home' %}" aria-label="logo image">
+        <img src="{% static 'assets/images/resources/logo-2.png' %}" width="143" alt="TAE Aerospace Logo" />
+      </a>
+    </div>
+    <!-- /.logo-box -->
+
+    <div class="mobile-nav__container"></div>
+    <!-- /.mobile-nav__container -->
+
+    <ul class="mobile-nav__contact list-unstyled">
+      <li>
+        <i class="fa fa-envelope"></i>
+        <a href="mailto:info@taesaerospace.com">info@taesaerospace.com</a>
+      </li>
+      <li>
+        <i class="fa fa-phone-alt"></i>
+        <a href="tel:+14808170300">+1 480 817 0300</a>
+      </li>
+    </ul>
+    <!-- /.mobile-nav__contact -->
+
+    <!-- ✅ Login/Signup Buttons -->
+    <div class="mobile-nav__auth text-center mt-4">
+      {% if not request.user.is_authenticated %}
+      <a href="{% url 'login' %}" class="thm-btn thm-btn--sm me-2">Login</a>
+      <a href="{% url 'signup' %}" class="thm-btn thm-btn--sm thm-btn--outline">Sign Up</a>
+      {% endif %}
+    </div>
+    <!-- /.mobile-nav__auth -->
+  </div>
+  <!-- /.mobile-nav__content -->
+</div>
+<!-- /.mobile-nav__wrapper -->
+
+   
+
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form action="#">
+                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="thm-btn">
+                    <i class="icon-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+  
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69049ff0c18e97194ed74102/1j8t11hbo';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+    <script src="{% static 'assets/vendors/jquery/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jarallax/jarallax.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jquery-appear/jquery.appear.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jquery-validate/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/odometer/odometer.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/swiper/swiper.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/tiny-slider/tiny-slider.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/wnumb/wNumb.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/wow/wow.js' %}"></script>
+    <script src="{% static 'assets/vendors/isotope/isotope.js' %}"></script>
+    <script src="{% static 'assets/vendors/countdown/countdown.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/bxslider/jquery.bxslider.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/bootstrap-select/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/vegas/vegas.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jquery-ui/jquery-ui.js' %}"></script>
+    <script src="{% static 'assets/vendors/timepicker/timePicker.js' %}"></script>
+    <script src="{% static 'assets/vendors/circleType/jquery.circleType.js' %}"></script>
+    <script src="{% static 'assets/vendors/circleType/jquery.lettering.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+
+
+
+
+    <!-- template js -->
+    <script src="{% static 'assets/js/jetly.js' %}"></script>
+</body>
+
+</html>

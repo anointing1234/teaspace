@@ -1,0 +1,213 @@
+{% extends "base_sections/base/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+<!-- Page Header Start -->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Checkout</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Shop</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header End -->
+
+<!-- Checkout Page Start -->
+<section class="checkout-page">
+    <div class="container">
+        <div class="row">
+            <!-- Billing Details -->
+            <div class="col-xl-6 col-lg-6">
+                <div class="billing_details">
+               
+                    <form class="billing_details_form" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="billing_input_box">
+                                    <input type="text" name="country" placeholder="Enter your country" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row bs-gutter-x-20">
+                            <div class="col-xl-6">
+                                <div class="billing_input_box">
+                                    <input type="text" name="first_name" placeholder="First name" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="billing_input_box">
+                                    <input type="text" name="last_name" placeholder="Last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="billing_input_box">
+                                    <input type="text" name="company_name" placeholder="Company (optional)">
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="billing_input_box">
+                                    <input type="text" name="address" placeholder="Address" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="billing_input_box">
+                                    <input type="text" name="apartment" placeholder="Apartment, unit, etc. (optional)">
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="billing_input_box">
+                                    <input type="text" name="city" placeholder="Town / City" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row bs-gutter-x-20">
+                            <div class="col-xl-6">
+                                <div class="billing_input_box">
+                                    <input type="text" name="state" placeholder="State" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="billing_input_box">
+                                    <input type="text" name="zip" placeholder="Zip code" pattern="[0-9]*" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="billing_input_box">
+                                    <input type="email" name="email" placeholder="Email address" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="billing_input_box">
+                                    <input type="tel" name="phone" placeholder="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-xl-6 col-lg-6">
+                <div class="your_order">
+                    <h2>Your order</h2>
+                    <div class="order_table_box">
+                        <table class="order_table_detail">
+                            <thead class="order_table_head">
+                                <tr>
+                                    <th>Product</th>
+                                    <th class="right">Price</th>
+                                    <th class="right">Quantity</th>
+                                    <th class="right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if items %}
+                                    {% for item in items %}
+                                        <tr>
+                                            <td>{{ item.plane.name }}</td>
+                                            <td>${{ item.plane.price|intcomma }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td>${{ item.total_price|intcomma }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td colspan="3">${{ cart.total_price|intcomma }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td colspan="3">$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td colspan="3">${{ cart.total_price|intcomma }}</td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4" class="text-center">Your cart is empty.</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-right mt-3">
+                        <button type="button" class="thm-btn" id="place-order-btn">Place Your Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Checkout Page End -->
+
+<!-- SweetAlert + AJAX Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".billing_details_form");
+    const btn = document.getElementById("place-order-btn");
+
+    btn.addEventListener("click", function () {
+        const formData = new FormData(form);
+
+        fetch("{% url 'place_order_ajax' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+            },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === "success") {
+                const bank = data.bank;
+                Swal.fire({
+                    title: 'Bank Transfer Details',
+                    html: `
+                        <p><strong>${bank.name}</strong></p>
+                        <p>Bank: ${bank.bank_name}</p>
+                        <p>Account Name: ${bank.account_name}</p>
+                        <p>Account Number: ${bank.account_number}</p>
+                        ${bank.routing_number ? `<p>Routing Number: ${bank.routing_number}</p>` : ""}
+                        ${bank.instructions ? `<p>${bank.instructions}</p>` : ""}
+                        <p>Your payment is pending. Once confirmed, your order will be shipped.</p>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'I have paid',
+                }).then(() => {
+                    window.location.href = `/order_success/${data.order_id}/`;
+                });
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: data.message,
+                    icon: 'error'
+                });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            Swal.fire({
+                title: 'Error',
+                text: 'An unexpected error occurred. Please try again.',
+                icon: 'error'
+            });
+        });
+    });
+});
+</script>
+
+{% endblock contents %}
+
+
+

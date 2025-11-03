@@ -1,0 +1,178 @@
+{% extends "base_sections/base/base.html" %} 
+{% load static %}
+{% block contents %}
+
+  <style>
+    .air-platforms {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+
+    .air-platforms h2 {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .air-platforms p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .engine-section {
+      margin-top: 40px;
+    }
+
+    .engine-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .engine-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .engine-box h4 {
+      color: #003366;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .engine-box a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0056b3;
+      font-weight: 500;
+    }
+
+    .section-title__tagline {
+      color: #0056b3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .engine-img {
+      width: 50%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body class="custom-cursor">
+
+  <div class="custom-cursor__cursor"></div>
+  <div class="custom-cursor__cursor-two"></div>
+
+  <div class="preloader">
+    <div class="preloader__image"></div>
+  </div>
+
+  
+    <!--Page Header Start-->
+    <section class="page-header">
+      <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %})"></div>
+      <div class="container">
+        <div class="page-header__inner">
+          <h2>Air Platforms</h2>
+          <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><span>/</span></li>
+            <li>Air Platforms</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--Page Header End-->
+
+    <!-- Air Platforms Section Start -->
+    <section class="air-platforms">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="section-title__tagline">Defense Solutions</span>
+          <h2 class="section-title__title">Air Platforms</h2>
+        </div>
+
+        <p>
+          Through our long-term service to defence forces around the world, we have earned a reputation as a trusted
+          partner to Defence. Our customers include the Royal Australian Air Force, the United States Air Force and the
+          Royal Malaysian Air Force.
+        </p>
+
+        <p>
+          Through technical excellence, and the use of data to drive continuous improvement, our engine solutions have
+          led to higher reliability outcomes and a reduction in our customers’ fleet sustainment costs.
+        </p>
+
+        <p><em>Photo credit: Pratt & Whitney</em></p>
+
+        <div class="engine-section">
+          <h3>Engines</h3>
+          <p>We offer a complete repair, overhaul and test capability for military air platforms.</p>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="engine-box text-center">
+                <img src="{% static 'assets/images/services/ge-f414.jpg' %}" alt="GE F414 Engine" class="engine-img">
+                <h4>GE F414</h4>
+                <p>Comprehensive, OEM-backed maintenance, repair, and overhaul for F414 turbofan engines.</p>
+                <a href="#">Learn more</a>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="engine-box text-center">
+                <img src="{% static 'assets/images/services/ge-f414.webp' %}" alt="Pratt & Whitney F135 Engine" class="engine-img">
+                <h4>Pratt & Whitney F135</h4>
+                <p>Maintenance, repair, overhaul, and upgrade services for all F135 turbofan engines operating in the
+                  Asia-Pacific region.</p>
+                <a href="#">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-section">
+          <h3>Wheels & Brakes</h3>
+          <img style="margin-top: 50px;" src="{% static 'assets/images/services/wheels-brakes.jpg' %}" alt="Wheels and Brakes" class="engine-img">
+          <p>Approved wheel and brake maintenance services for a range of military and commercial aircraft.</p>
+          <ul>
+            <li>Military Aircraft</li>
+            <li>Commercial Aircraft</li>
+          </ul>
+        </div>
+
+        <div class="engine-section">
+          <h3>Specialised Engineering</h3>
+          <img style="margin-top: 50px;" src="{% static 'assets/images/services/engineering.jpg' %}" alt="Specialised Engineering" class="engine-img">
+          <p>
+            Design engineering, performance and reliability programs, and engine asset management solutions delivered
+            by our experienced propulsion engineering team.
+          </p>
+          <ul>
+            <li>Air Platforms</li>
+            <li>Land Platforms</li>
+            <li>Aeroderivative Engines</li>
+          </ul>
+        </div>
+
+        <div class="engine-section">
+          <h3>Advanced Manufacturing</h3>
+          <img style="margin-top: 50px;" src="{% static 'assets/images/services/manufacturing.jpg' %}" alt="Advanced Manufacturing" class="engine-img">
+          <p>
+            Quality aerospace manufacturing and aluminium vacuum brazing capabilities to support component manufacture
+            for the world’s F-35 fleet.
+          </p>
+          <p><strong>Aerospace Manufacturing</strong></p>
+        </div>
+      </div>
+    </section>
+    <!-- Air Platforms Section End -->
+
+   {% endblock contents %}

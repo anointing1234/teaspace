@@ -1,0 +1,163 @@
+{% extends "base_sections/base/base.html" %} 
+{% load static %}
+{% block contents %}
+
+  <style>
+    .fixed-wing {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+
+    .fixed-wing h2 {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .fixed-wing h3 {
+      color: #003366;
+      font-weight: 600;
+      margin-top: 40px;
+    }
+
+    .fixed-wing p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .section-title__tagline {
+      color: #0056b3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .hero-content {
+      margin-bottom: 50px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+
+    .service-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+
+    .service-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-box h5 {
+      color: #003366;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .service-box a {
+      color: #0056b3;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .service-box a:hover {
+      text-decoration: underline;
+    }
+
+    .list-unstyled li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image {
+        margin-top: 30px;
+      }
+    }
+  </style>
+
+    <!--Page Header Start-->
+    <section class="page-header">
+      <div class="page-header-bg" style="background-image: url({% static 'assets/images/backgrounds/rotary-wing-bg.jpg' %})"></div>
+      <div class="container">
+        <div class="page-header__inner">
+          <h2>Rotary Wing</h2>
+          <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><span>/</span></li>
+            <li>Commercial</li>
+            <li><span>/</span></li>
+            <li>Rotary Wing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--Page Header End-->
+
+    <!-- Rotary Wing Section Start -->
+    <section class="fixed-wing">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="section-title__tagline">Commercial Aviation</span>
+          <h2 class="section-title__title">Rotary Wing</h2>
+        </div>
+
+        <!-- Hero: Image + Text Side by Side -->
+        <div class="row align-items-center hero-content">
+          <div class="col-lg-6">
+            <h3>Rely on us to keep you flying safely.</h3>
+            <p>
+              Helicopter operators rely on our OEM-backed FCU and PTG repair and overhaul services to keep their M250, LTS101 and PT6T engines flying safely. Our team has worked on all three engines for decades as a dual AWARS (Authorized Warranty and Repair Station) and triple licensee for fuel systems.
+            </p>
+          </div>
+          <div class="col-lg-6 hero-image">
+            <img src="{% static 'assets/images/services/rotary-wing-hero.jpg' %}" alt="Rotary Wing Helicopter MRO">
+          </div>
+        </div>
+
+        <!-- Fuel Controls -->
+        <h3>Fuel controls</h3>
+        <p>OEM-backed fuel controls and propeller turbine governors to keep you flying safely.</p>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Honeywell</h5>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Rolls-Royce</h5>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="service-box">
+              <h5>Pratt & Whitney</h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- Electromechanical Components -->
+        <h3>Electromechanical components</h3>
+        <p>Fast turn times and quality MRO services for your helicopter’s starter generators.</p>
+        <a href="#">Learn more</a>
+      </div>
+    </section>
+    <!-- Rotary Wing Section End -->
+
+
+
+
+   {% endblock contents %}    
