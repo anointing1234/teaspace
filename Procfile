@@ -1,0 +1,1 @@
+web: gunicorn teaspace_p.wsgi --log-file -
