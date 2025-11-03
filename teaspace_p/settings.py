@@ -155,22 +155,36 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'core/static',  # Directory for app-specific static files
-]
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # Directory for collected static files
+# -----------------------
+# Static & Media Settings
+# -----------------------
 
-# Media files (user-uploaded content)
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-# Check if the app is running on Railway (or another production environment)
 if os.environ.get('ON_RAILWAY') == 'true':
-    # 🌟 PRODUCTION SETTING: Use the ABSOLUTE path for the Railway Volume mount.
-    # Assuming Railway places your project in /app, your media is at /app/core/media.
+    # -------------------
+    # 🌍 PRODUCTION MODE
+    # -------------------
+    DEBUG = False
+
+    # Static files collected here by collectstatic
+    STATIC_ROOT = '/app/staticfiles'
+
+    # Your app’s uploaded files
     MEDIA_ROOT = '/app/core/media'
+
 else:
-    # DEVELOPMENT SETTING: Your current local path.
+    # -------------------
+    # 💻 LOCAL DEVELOPMENT
+    # -------------------
+    DEBUG = True
+
+    # These are your working directories during development
+    STATICFILES_DIRS = [
+        BASE_DIR / 'core/static',
+    ]
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
     MEDIA_ROOT = BASE_DIR / 'core/media'
 
 
