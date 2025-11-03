@@ -183,12 +183,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
 DEFAULT_FROM_EMAIL = "info@taesaerospace.com" 
 
-RESEND_API_KEY = os.getenv("RESEND_API_KEY")
+# RESEND_API_KEY = os.getenv("RESEND_API_KEY")
 
-if not RESEND_API_KEY:
-    print("❌ RESEND_API_KEY not found in environment!")
-else:
-    print("✅ RESEND_API_KEY loaded successfully")
+# if not RESEND_API_KEY:
+#     print("❌ RESEND_API_KEY not found in environment!")
+# else:
+#     print("✅ RESEND_API_KEY loaded successfully")
 
 
 
