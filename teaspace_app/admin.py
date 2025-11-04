@@ -44,7 +44,7 @@ class CategoryAdmin(UnfoldAdmin):  # Changed from admin.ModelAdmin
 
 @admin.register(Plane)
 class PlaneAdmin(UnfoldAdmin):
-    list_display = ('id', 'name', 'type', 'price', 'rating', 'category', 'image_preview', 'created_at')
+    list_display = ('id', 'name', 'type', 'price', 'category', 'image_preview', 'created_at')
     list_filter = ('category', 'created_at')
     search_fields = ('name', 'type', 'details')
 

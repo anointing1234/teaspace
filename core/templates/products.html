@@ -72,15 +72,7 @@
                 </a>
             </div>
             <div class="product__all-content">
-                <div class="product__all-review">
-                    {% for i in "12345" %}
-                        {% if forloop.counter <= plane.rating|floatformat:0 %}
-                            <i class="fa fa-star colored-star"></i>
-                        {% else %}
-                            <i class="fa fa-star-o colored-star"></i>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                
                 <h4 class="product__all-title">
                     <a href="{% url 'product_detail' plane.id %}">{{ plane.name }}</a>
                 </h4>

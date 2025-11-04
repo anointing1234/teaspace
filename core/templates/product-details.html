@@ -39,16 +39,7 @@
                 <div class="product-details__top">
                     <h3 class="product-details__title">{{ plane.name }} <span>${{ plane.price|intcomma }}</span></h3>
                 </div>
-                <div class="product-details__review">
-                    {% for i in "12345" %}
-                        {% if forloop.counter <= plane.rating|floatformat:0 %}
-                            <i class="fa fa-star colored-star"></i>
-                        {% else %}
-                            <i class="fa fa-star-o colored-star"></i>
-                        {% endif %}
-                    {% endfor %}
-                    <span>{{ plane.rating }} rating</span>
-                </div>
+                
                 <div class="product-details__content">
                     <p class="product-details__content-text1">{{ plane.details }}</p>
                 </div>

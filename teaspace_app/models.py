@@ -81,7 +81,6 @@ class Plane(models.Model):
     type = models.CharField(max_length=255, blank=True, null=True)
     price = models.DecimalField(max_digits=12, decimal_places=2)
     details = models.TextField()
-    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
     image = models.ImageField(upload_to='planes/', blank=True, null=True)  # NEW field
     created_at = models.DateTimeField(auto_now_add=True)
 
