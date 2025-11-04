@@ -32,7 +32,10 @@ urlpatterns = [
     path("place-order-ajax/", views.place_order_ajax, name="place_order_ajax"),
     path("order_success/<int:order_id>/", views.order_success, name="order_success"),
     path('orders_page/', views.orders_page, name='orders_page'),
+    path("contact_submit", views.contact_submit, name="contact_submit"),
     path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
+    path("send_recovery_code/", views.send_recovery_code, name="send_recovery_code"),
+    path("reset_password/", views.reset_password, name="reset_password"),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

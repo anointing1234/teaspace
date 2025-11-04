@@ -71,22 +71,95 @@
 </section>
 <!-- Password Reset Request Form End -->
 
+
+
+
+
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-const passwordRequestForm = document.getElementById('password-request-form');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("password-request-form");
+  const button = form.querySelector("button[type='submit']");
 
-passwordRequestForm.addEventListener('submit', function(e) {
-  e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim();
 
-  const email = passwordRequestForm.email.value.trim();
+    if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      Swal.fire({
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+        icon: "warning",
+        width: "300px",
+      });
+      return;
+    }
 
-  if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+    button.disabled = true;
 
-  // If validation passes, submit form
-  passwordRequestForm.submit();
+    Swal.fire({
+      title: "Sending...",
+      text: "Please wait a moment.",
+      icon: "info",
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading(),
+      width: "300px",
+    });
+
+    try {
+      const response = await fetch("{% url 'send_recovery_code' %}", {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": form.querySelector("[name=csrfmiddlewaretoken]").value,
+        },
+        body: new FormData(form),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        Swal.fire({
+          title: "Email Sent!",
+          text: data.message,
+          icon: "success",
+          confirmButtonColor: "#004aad",
+          width: "300px",
+          timer: 1500,
+          showConfirmButton: false,
+        }).then(() => {
+          // ✅ Redirect to password reset page
+          window.location.href = "{% url 'reset_password' %}";
+        });
+        form.reset();
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: data.message,
+          icon: "error",
+          confirmButtonColor: "#d33",
+          width: "300px",
+        });
+        console.error("Server error:", data);
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Network Error",
+        text: "Please check your internet connection and try again.",
+        icon: "error",
+        width: "300px",
+      });
+      console.error("Network error:", error);
+    } finally {
+      button.disabled = false;
+    }
+  });
 });
 </script>
+
+
 
 {% endblock contents %}

@@ -95,8 +95,9 @@
         <section class="contact-one">
             <div class="container">
                 <div class="contact-one__form-box">
-                    <form action="assets/inc/sendemail.php" class="contact-one__form contact-form-validated"
-                        novalidate="novalidate">
+                    <form action="#" class="contact-one__form contact-form-validated">
+                     {% csrf_token %}
+                      
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="contact-form__input-box">
@@ -142,6 +143,118 @@
   </iframe>
 </section>
 <!--Google Map End-->
+
+
+
+{% comment %} script for email {% endcomment %}
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".contact-one__form");
+  const submitButton = form.querySelector("button[type='submit']");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitButton.disabled = true;
+
+    Swal.fire({
+      title: "Sending...",
+      text: "Please wait a moment.",
+      icon: "info",
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      background: "#fff",
+      color: "#333",
+      width: "300px",
+      customClass: {
+        popup: "small-swal",
+      },
+      didOpen: () => Swal.showLoading(),
+    });
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("{% url 'contact_submit' %}", {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": form.querySelector("[name=csrfmiddlewaretoken]").value,
+        },
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        Swal.fire({
+          title: "Message Sent!",
+          text: "We'll get back to you shortly.",
+          icon: "success",
+          confirmButtonColor: "#004aad",
+          width: "300px",
+          background: "#f9fafc",
+          color: "#333",
+          customClass: {
+            popup: "small-swal",
+            confirmButton: "swal-btn",
+          },
+        });
+        form.reset();
+      } else {
+        Swal.fire({
+          title: "Oops!",
+          text: "Something went wrong. Please try again.",
+          icon: "error",
+          confirmButtonColor: "#d33",
+          width: "300px",
+          background: "#fff",
+          color: "#333",
+          customClass: {
+            popup: "small-swal",
+            confirmButton: "swal-btn",
+          },
+        });
+        console.error("Server error:", data.error || data);
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Network Error",
+        text: "Please check your connection.",
+        icon: "error",
+        confirmButtonColor: "#d33",
+        width: "300px",
+        background: "#fff",
+        color: "#333",
+        customClass: {
+          popup: "small-swal",
+          confirmButton: "swal-btn",
+        },
+      });
+      console.error("Network or script error:", error);
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+});
+</script>
+
+<style>
+/* Optional SweetAlert styling */
+.small-swal {
+  border-radius: 12px !important;
+  padding: 1rem !important;
+  font-size: 0.9rem !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}
+
+.swal-btn {
+  padding: 6px 15px !important;
+  font-size: 0.85rem !important;
+  border-radius: 6px !important;
+}
+</style>
 
        
     {% endblock contents %}

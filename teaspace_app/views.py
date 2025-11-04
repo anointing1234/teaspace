@@ -14,10 +14,26 @@ import uuid # only if you have these models
 from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator
 import json
+from django.core.mail import EmailMessage
+from django.utils.html import format_html
+from django.conf import settings
+from django.contrib.auth import get_user_model
 
+
+User = get_user_model()
+import random
 
 def home(request):
-    return render(request, 'index.html')
+    plane_list = Plane.objects.all().order_by('-created_at')
+    categories = Category.objects.all()
+
+    paginator = Paginator(plane_list, 9)  # 9 products per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'index.html',{
+        'planes': page_obj,
+        'categories': categories
+    })
 
 def careers(request):
     return render(request, 'Careers.html')
@@ -369,3 +385,139 @@ def order_detail(request, order_id):
         'bank': bank,
         'order_items': order_items,
     })
+
+
+
+def contact_submit(request):
+    if request.method == "POST":
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        phone = request.POST.get("phone", "").strip()
+        subject = request.POST.get("subject", "").strip()
+        message = request.POST.get("message", "").strip()
+
+        # Basic validation
+        if not (name and email and message):
+            return JsonResponse({"success": False, "error": "Missing required fields"}, status=400)
+
+        try:
+          
+
+            # Build styled email to admin
+            html_message = format_html("""
+                <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f9fafc; color: #333;">
+                    <h2 style="color: #004aad;">New Contact Message</h2>
+                    <p><strong>Name:</strong> {}</p>
+                    <p><strong>Email:</strong> {}</p>
+                    <p><strong>Phone:</strong> {}</p>
+                    <p><strong>Subject:</strong> {}</p>
+                    <hr>
+                    <p style="margin-top:10px;"><strong>Message:</strong></p>
+                    <p style="background:#fff; padding:15px; border-radius:8px; border:1px solid #eee;">{}</p>
+                    <hr>
+                    <small>This message was submitted via the TAE Aerospace website contact form.</small>
+                </div>
+            """, name, email, phone, subject, message)
+
+            # Send email
+            mail = EmailMessage(
+                subject=f"Contact Form: {subject or 'No Subject'}",
+                body=html_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[settings.ADMIN_EMAIL],  # define this in settings
+            )
+            mail.content_subtype = "html"
+            mail.send(fail_silently=False)
+
+            return JsonResponse({"success": True})
+
+        except Exception as e:
+            # Log detailed errors for devs
+            print("❌ Contact form error:", e)
+            return JsonResponse({"success": False, "error": str(e)}, status=500)
+
+    return JsonResponse({"success": False, "error": "Invalid request"}, status=400)
+
+
+
+
+def send_recovery_code(request):
+    if request.method == "POST":
+        email = request.POST.get("email", "").strip()
+        if not email:
+            return JsonResponse({"success": False, "message": "Email is required."}, status=400)
+
+        try:
+            user = User.objects.filter(email=email).first()
+            if not user:
+                return JsonResponse({"success": False, "message": "No user found with that email."}, status=404)
+
+            recovery_code = random.randint(100000, 999999)
+            request.session["recovery_email"] = email
+            request.session["recovery_code"] = str(recovery_code)
+
+            # Send professional styled email
+            html_message = format_html("""
+                <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f9fafc; color: #333;">
+                    <h2 style="color: #004aad;">Password Recovery Code</h2>
+                    <p>Hello <strong>{}</strong>,</p>
+                    <p>We received a request to reset your password.</p>
+                    <p style="font-size: 18px; font-weight: bold; background:#f1f1f1; padding:10px; border-radius:8px; text-align:center;">
+                        Your recovery code: <span style="color:#004aad;">{}</span>
+                    </p>
+                    <p>If you didn’t request this, please ignore this message.</p>
+                    <br>
+                    <p style="font-size:13px; color:#777;">– TAE Aerospace Support</p>
+                </div>
+            """, user.full_name, recovery_code)
+
+            mail = EmailMessage(
+                subject="Your TAE Aerospace Password Recovery Code",
+                body=html_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[email],
+            )
+            mail.content_subtype = "html"
+            mail.send(fail_silently=False)
+
+            return JsonResponse({"success": True, "message": "Recovery code sent successfully!"})
+        except Exception as e:
+            print("❌ Error sending recovery code:", e)
+            return JsonResponse({"success": False, "message": "An error occurred."}, status=500)
+
+    return JsonResponse({"success": False, "message": "Invalid request method."}, status=405)
+
+
+
+
+def reset_password(request):
+    if request.method == "POST":
+        recovery_code_input = request.POST.get("recovery_code", "").strip()
+        new_password = request.POST.get("new_password", "").strip()
+
+        session_code = request.session.get("recovery_code")
+        session_email = request.session.get("recovery_email")
+
+        if not session_code or not session_email:
+            return JsonResponse({"success": False, "message": "Session expired. Please request a new code."}, status=400)
+
+        if recovery_code_input != session_code:
+            return JsonResponse({"success": False, "message": "Invalid recovery code."}, status=400)
+
+        try:
+            user = User.objects.get(email=session_email)
+            user.password = make_password(new_password)
+            user.save()
+
+            # Clear session data
+            request.session.pop("recovery_code", None)
+            request.session.pop("recovery_email", None)
+
+            return JsonResponse({"success": True, "message": "Password updated successfully!"})
+        except User.DoesNotExist:
+            return JsonResponse({"success": False, "message": "User not found."}, status=404)
+        except Exception as e:
+            print("❌ Error resetting password:", e)
+            return JsonResponse({"success": False, "message": "An error occurred."}, status=500)
+
+    return JsonResponse({"success": False, "message": "Invalid request."}, status=405)

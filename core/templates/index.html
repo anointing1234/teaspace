@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +28,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
     rel="stylesheet">
+
+      <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    rel="stylesheet"
+    />
+    <!-- Font Awesome CDN -->
 
   <!-- Vendor Styles -->
   <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap/css/bootstrap.min.css' %}" />
@@ -144,9 +151,9 @@
                                 </div>
                                 <div class="text">
                                     <p style="color: black;">TAE Aerospace, Inc.
-7879 E Beck Ln, Scottsdale, 
-AZ 85260, United States
-</p>
+                                      7879 E Beck Ln, Scottsdale, 
+                                      AZ 85260, United States
+                                    </p>
                                 </div>
                             </li>
                             <li>
@@ -339,6 +346,142 @@ AZ 85260, United States
   </div>
 </section>
 <!--Main Slider End-->
+
+
+
+
+<h2 class="text-center mt-5 mb-5 section-title__title"> Products
+</h2>
+
+
+
+<!-- Product Start -->
+<section class="product mt-5 mb-5 pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-xl-3 col-lg-3">
+                <div class="product__sidebar">
+                    <div class="shop-search product__sidebar-single">
+                        <form action="#">
+                            <input type="text" placeholder="Search">
+                        </form>
+                    </div>
+                    <div class="shop-category product__sidebar-single">
+                        <h3 class="product__sidebar-title">Categories</h3>
+                        <ul class="list-unstyled">
+                            {% for category in categories %}
+                                <li><a href="#">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="col-xl-9 col-lg-9">
+                <div class="product__items">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="product__showing-result">
+                                <div class="product__showing-text-box">
+                                    <p class="product__showing-text">
+                                        Showing {{ planes.paginator.count }} results
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product__all">
+                        <div class="row">
+                           {% for plane in planes %}
+    <div class="col-xl-4 col-lg-4 col-md-6">
+        <div class="product__all-single">
+            <div class="product__all-img">
+                <a href="{% url 'product_detail' plane.id %}">
+                    {% if plane.image %}
+                        <img src="{{ plane.image.url }}" alt="{{ plane.name }}">
+                    {% else %}
+                        <img src="{% static 'assets/images/shop/default-plane.jpg' %}" alt="{{ plane.name }}">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="product__all-content">
+                <div class="product__all-review">
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= plane.rating|floatformat:0 %}
+                            <i class="fa fa-star colored-star"></i>
+                        {% else %}
+                            <i class="fa fa-star-o colored-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <h4 class="product__all-title">
+                    <a href="{% url 'product_detail' plane.id %}">{{ plane.name }}</a>
+                </h4>
+                <p class="product__all-price">${{ plane.price|intcomma }}</p>
+             {% if request.user.is_authenticated %}
+<div class="product__all-btn-box">
+    <button class="thm-btn product__all-btn add-to-cart-btn" data-plane-id="{{ plane.id }}">
+        Add to Cart
+    </button>
+</div>
+{% else %}
+<div class="product__all-btn-box">
+    <a href="{% url 'login' %}" class="thm-btn product__all-btn" >
+        Add to Cart
+    </a>
+</div>
+{% endif %}
+
+
+            </div>
+        </div>
+    </div>
+{% empty %}
+    <p>No products available.</p>
+{% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="product__pagination mt-5">
+                        <ul class="pagination justify-content-center">
+                            {% if planes.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ planes.previous_page_number }}">« Previous</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled"><span class="page-link">« Previous</span></li>
+                            {% endif %}
+
+                            {% for num in planes.paginator.page_range %}
+                                {% if planes.number == num %}
+                                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if planes.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ planes.next_page_number }}">Next »</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled"><span class="page-link">Next »</span></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <!-- End Pagination -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product End -->
 
 
         
@@ -1066,6 +1209,71 @@ s0.parentNode.insertBefore(s1,s0);
 
     <!-- template js -->
     <script src="{% static 'assets/js/jetly.js' %}"></script>
+
+
+    
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Add to Cart
+    $('.add-to-cart-btn').click(function(e){
+        e.preventDefault();
+        let plane_id = $(this).data('plane-id');
+        $.ajax({
+            url: "{% url 'add_to_cart' %}",
+            method: "POST",
+            data: {
+                'plane_id': plane_id,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response){
+                if(response.success){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Added to Cart',
+                        text: response.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    // Optional: Update cart count in navbar
+                    $('#cart-count').text(response.cart_count);
+                }
+            }
+        });
+    });
+
+    // Increase / Decrease quantity in cart page
+    $('.update-quantity-btn').click(function(e){
+        e.preventDefault();
+        let item_id = $(this).data('item-id');
+        let action = $(this).data('action');
+
+        $.ajax({
+            url: "{% url 'update_cart_item' %}",
+            method: "POST",
+            data: {
+                'item_id': item_id,
+                'action': action,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response){
+                if(response.success){
+                    // Update quantity & totals
+                    $('#quantity-' + item_id).text(response.quantity);
+                    $('#item-total-' + item_id).text('$' + response.item_total);
+                    $('#cart-total').text('$' + response.cart_total);
+                }
+            }
+        });
+    });
+});
+</script>
+
+
+
 </body>
 
 </html>
