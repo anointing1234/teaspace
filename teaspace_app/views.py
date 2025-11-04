@@ -121,6 +121,8 @@ def login_view(request):
 def password_reset(request):
     return render(request,'auth/recovery_code.html')
 
+def reset_password_view(request):
+    return render(request,'auth/Password_Reset.html')
 
 
 

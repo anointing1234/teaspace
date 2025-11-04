@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
           showConfirmButton: false,
         }).then(() => {
           // ✅ Redirect to password reset page
-          window.location.href = "{% url 'reset_password' %}";
+          window.location.href = "{% url 'reset_password_view' %}";
         });
         form.reset();
       } else {

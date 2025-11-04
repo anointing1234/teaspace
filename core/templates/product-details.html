@@ -62,6 +62,7 @@
                     </div>
                 </div>
 
+                   {% if request.user.is_authenticated %}
                 <div class="product-details__buttons">
                     <div class="product-details__buttons-2">
                         <button class="thm-btn add-to-cart-btn" data-plane-id="{{ plane.id }}">
@@ -69,6 +70,15 @@
                         </button>
                     </div>
                 </div>
+                {% else %}
+                  <div class="product-details__buttons">
+                    <div class="product-details__buttons-2">
+                        <a href="{% url 'login' %}"  class="thm-btn ">
+                            Add to Cart
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
 
             </div>
         </div>
