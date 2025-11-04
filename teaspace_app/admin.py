@@ -19,7 +19,6 @@ class CustomUserAdmin(UserAdmin, UnfoldAdmin):  # Inherit from both
     ordering = ('email',)
     fieldsets = (
         (None, {'fields': ('email', 'username', 'full_name', 'phone', 'password')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
