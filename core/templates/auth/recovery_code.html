@@ -75,7 +75,6 @@
 
 
 
-
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -117,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "X-CSRFToken": form.querySelector("[name=csrfmiddlewaretoken]").value,
         },
         body: new FormData(form),
+        credentials: "include", // ✅ Keep session cookie so recovery_code is stored
       });
 
       const data = await response.json();

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse 
 from django.http import JsonResponse
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from .models import (
     CustomUser,
@@ -442,7 +442,9 @@ def contact_submit(request):
 
 
 
-
+# --------------------------
+# Send Recovery Code View
+# --------------------------
 def send_recovery_code(request):
     if request.method == "POST":
         email = request.POST.get("email", "").strip()
@@ -454,12 +456,17 @@ def send_recovery_code(request):
             if not user:
                 return JsonResponse({"success": False, "message": "No user found with that email."}, status=404)
 
-            recovery_code = random.randint(100000, 999999)
-            request.session["recovery_email"] = email
-            request.session["recovery_code"] = str(recovery_code)
+            # Generate 6-digit recovery code
+            recovery_code = str(random.randint(100000, 999999))
 
-            # Send professional styled email
-            html_message = format_html("""
+            # Store email and hashed code in session
+            request.session["recovery_email"] = email
+            request.session["recovery_code"] = make_password(recovery_code)
+            request.session.modified = True  # ✅ ensure it's saved
+
+            # Email template
+            html_message = format_html(
+                """
                 <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f9fafc; color: #333;">
                     <h2 style="color: #004aad;">Password Recovery Code</h2>
                     <p>Hello <strong>{}</strong>,</p>
@@ -471,8 +478,12 @@ def send_recovery_code(request):
                     <br>
                     <p style="font-size:13px; color:#777;">– TAE Aerospace Support</p>
                 </div>
-            """, user.full_name, recovery_code)
+                """,
+                user.full_name,
+                recovery_code,
+            )
 
+            # Send email
             mail = EmailMessage(
                 subject="Your TAE Aerospace Password Recovery Code",
                 body=html_message,
@@ -482,44 +493,57 @@ def send_recovery_code(request):
             mail.content_subtype = "html"
             mail.send(fail_silently=False)
 
-            return JsonResponse({"success": True, "message": "Recovery code sent successfully!"})
+            return JsonResponse({
+                "success": True,
+                "message": "Recovery code sent successfully! Please check your email.",
+            })
+
         except Exception as e:
             print("❌ Error sending recovery code:", e)
-            return JsonResponse({"success": False, "message": "An error occurred."}, status=500)
+            return JsonResponse({"success": False, "message": "An error occurred while sending email."}, status=500)
 
     return JsonResponse({"success": False, "message": "Invalid request method."}, status=405)
 
 
 
-
+# --------------------------
+# Reset Password View
+# --------------------------
 def reset_password(request):
     if request.method == "POST":
         recovery_code_input = request.POST.get("recovery_code", "").strip()
         new_password = request.POST.get("new_password", "").strip()
 
-        session_code = request.session.get("recovery_code")
+        # Retrieve from session
         session_email = request.session.get("recovery_email")
+        session_code_hash = request.session.get("recovery_code")
 
-        if not session_code or not session_email:
-            return JsonResponse({"success": False, "message": "Session expired. Please request a new code."}, status=400)
+        if not session_email or not session_code_hash:
+            return JsonResponse({"success": False, "message": "Session expired. Please request a new recovery code."}, status=400)
 
-        if recovery_code_input != session_code:
+        # Verify code
+        if not check_password(recovery_code_input, session_code_hash):
             return JsonResponse({"success": False, "message": "Invalid recovery code."}, status=400)
 
+        # Update password
         try:
             user = User.objects.get(email=session_email)
             user.password = make_password(new_password)
             user.save()
 
-            # Clear session data
-            request.session.pop("recovery_code", None)
+            # Clear session data after success
             request.session.pop("recovery_email", None)
+            request.session.pop("recovery_code", None)
 
-            return JsonResponse({"success": True, "message": "Password updated successfully!"})
+            return JsonResponse({
+                "success": True,
+                "message": "Password updated successfully! You can now log in.",
+            })
+
         except User.DoesNotExist:
             return JsonResponse({"success": False, "message": "User not found."}, status=404)
         except Exception as e:
             print("❌ Error resetting password:", e)
-            return JsonResponse({"success": False, "message": "An error occurred."}, status=500)
+            return JsonResponse({"success": False, "message": "An error occurred while resetting password."}, status=500)
 
-    return JsonResponse({"success": False, "message": "Invalid request."}, status=405)
+    return JsonResponse({"success": False, "message": "Invalid request method."}, status=405)
